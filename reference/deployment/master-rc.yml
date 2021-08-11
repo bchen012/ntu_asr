@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: master
+  labels:
+    app: master
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: master
+  template:
+    metadata:
+      labels:
+        app: master
+    spec:
+      containers:
+        - name: master
+          image: wudaown/docker-kaldi-master:1.0.0
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: '200m'
+              memory: '2G'
+            limits:
+              cpu: '300m'
+              memory: '4G'

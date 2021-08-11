@@ -1,0 +1,36 @@
+models:
+#  English_0919_8k: 3
+  CS_09AM_8k: 1
+  Mandarin_09AM_8k: 0
+  
+image:
+  repository: ntuspeechlab2.azurecr.io/online-baseline
+  tag: latest
+  pullPolicy: Always
+  pullSecrets: azure_template-cr-secret
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: LoadBalancer
+  port: 8080
+  resourceGroup: ntu-online-scaled
+  loadBalancerIP: STATIC_IP_ADDRESS
+  enablehttps: false
+
+commands:
+  master:
+    - '"/home/appuser/opt/tini"' 
+    - '"--"'
+    - '"/home/appuser/opt/start_master.sh"'
+  worker:
+  # see _helpers.tpl on how full command constructed
+    pre:
+      - '"/home/appuser/opt/tini"' 
+      - '"--"'
+      - '"/home/appuser/opt/start_worker.sh"'
+fileshare:
+  secretName: models-files-secret
+  shareName: online-models
+

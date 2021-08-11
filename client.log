@@ -1,0 +1,689 @@
+    INFO 2021-05-16 15:34:56,055 Socket opened! <__main__.MyClient object at 0x108217c10> 
+    INFO 2021-05-16 15:34:56,055 Start transcribing... 
+    INFO 2021-05-16 15:34:56,061 Received error from server (status 9) 
+    INFO 2021-05-16 15:34:56,061 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-05-16 15:34:56,062 
+ URL: ws://23.97.51.248/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-05-16 15:34:56,063 
+------------------------
+Final Result: 
+ 
+    INFO 2021-05-16 15:34:56,063  
+    INFO 2021-05-17 17:27:45,650 Socket opened! <__main__.MyClient object at 0x10694fc70> 
+    INFO 2021-05-17 17:27:45,651 Start transcribing... 
+    INFO 2021-05-17 17:27:46,641 尤其 
+    INFO 2021-05-17 17:27:46,786 有趣 的 
+    INFO 2021-05-17 17:27:47,050 游戏 的 
+    INFO 2021-05-17 17:27:47,360 you see the whole 
+    INFO 2021-05-17 17:27:47,546 you see the whole of 
+    INFO 2021-05-17 17:27:47,930 you see the whole of my 
+    INFO 2021-05-17 17:27:48,128 you see the whole of my kind of 
+    INFO 2021-05-17 17:27:48,355 you see the whole of my adult life 
+    INFO 2021-05-17 17:27:49,230 you see the whole of my adult life 
+    INFO 2021-05-17 17:27:54,767 嗯 
+    INFO 2021-05-17 17:27:55,825 being in 
+    INFO 2021-05-17 17:27:56,535 being in malaysia 
+    INFO 2021-05-17 17:27:56,931 being in malaysia and 
+    INFO 2021-05-17 17:27:57,076 being in malaysia and myanmar 
+    INFO 2021-05-17 17:27:57,352 being in malaysia and large 
+    INFO 2021-05-17 17:27:57,638 being in malaysia and larger 
+    INFO 2021-05-30 20:05:05,866 Socket opened! <__main__.MyClient object at 0x110a7c9d0> 
+    INFO 2021-05-30 20:05:05,868 Start transcribing... 
+    INFO 2021-05-30 20:05:05,949 Received error from server (status 9) 
+    INFO 2021-05-30 20:05:05,949 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-05-30 20:05:05,970 
+ URL: ws://34.126.175.111:80/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-05-30 20:05:05,970 
+------------------------
+Final Result: 
+ 
+    INFO 2021-05-30 20:05:05,970  
+    INFO 2021-05-30 20:05:55,553 Socket opened! <__main__.MyClient object at 0x102d0a9d0> 
+    INFO 2021-05-30 20:05:55,555 Start transcribing... 
+    INFO 2021-05-30 20:05:55,561 Received error from server (status 9) 
+    INFO 2021-05-30 20:05:55,562 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-05-30 20:05:55,566 
+ URL: ws://34.126.175.111/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-05-30 20:05:55,567 
+------------------------
+Final Result: 
+ 
+    INFO 2021-05-30 20:05:55,567  
+    INFO 2021-06-01 18:23:34,730 Socket opened! <__main__.MyClient object at 0x10aa9aa00> 
+    INFO 2021-06-01 18:23:34,732 Start transcribing... 
+    INFO 2021-06-01 18:23:34,765 Received error from server (status 9) 
+    INFO 2021-06-01 18:23:34,766 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-06-01 18:23:34,814 
+ URL: ws://0.0.0.0:8080/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-06-01 18:23:34,815 
+------------------------
+Final Result: 
+ 
+    INFO 2021-06-01 18:23:34,816  
+    INFO 2021-06-01 18:24:11,126 Socket opened! <__main__.MyClient object at 0x10948da00> 
+    INFO 2021-06-01 18:24:11,128 Start transcribing... 
+    INFO 2021-06-01 18:24:11,198 Received error from server (status 9) 
+    INFO 2021-06-01 18:24:11,198 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-06-01 18:24:11,224 
+ URL: ws://0.0.0.0:8080/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-06-01 18:24:11,226 
+------------------------
+Final Result: 
+ 
+    INFO 2021-06-01 18:24:11,227  
+    INFO 2021-06-02 20:09:55,205 Socket opened! <__main__.MyClient object at 0x103849b50> 
+    INFO 2021-06-02 20:09:55,206 Start transcribing... 
+    INFO 2021-06-02 20:09:56,158 尤其 
+    INFO 2021-06-02 20:09:56,338 有趣 的 
+    INFO 2021-06-02 20:09:56,590 游戏 的 
+    INFO 2021-06-02 20:09:56,875 you see the whole 
+    INFO 2021-06-02 20:09:57,107 you see the whole of 
+    INFO 2021-06-02 20:09:57,429 you see the whole of my 
+    INFO 2021-06-02 20:09:57,650 you see the whole of my kind of 
+    INFO 2021-06-02 20:09:57,885 you see the whole of my adult life 
+    INFO 2021-06-02 20:09:58,718 you see the whole of my adult life 
+    INFO 2021-06-02 20:10:04,327 嗯 
+    INFO 2021-06-02 20:10:05,341 being in 
+    INFO 2021-06-02 20:10:06,106 being in malaysia 
+    INFO 2021-06-02 20:10:06,419 being in malaysia and 
+    INFO 2021-06-02 20:10:06,618 being in malaysia and myanmar 
+    INFO 2021-06-02 20:10:06,876 being in malaysia and large 
+    INFO 2021-06-02 20:10:07,134 being in malaysia and larger 
+    INFO 2021-06-02 20:10:07,923 being in malaysia and larger 
+    INFO 2021-06-02 20:10:08,761 就 在 
+    INFO 2021-06-02 20:10:08,979 有些 计划 
+    INFO 2021-06-02 20:10:09,253 you'll have to you have this 
+    INFO 2021-06-02 20:10:09,475 you'll have to you have to 
+    INFO 2021-06-02 20:10:09,702 you'll have to you have these two 
+    INFO 2021-06-02 20:10:10,025 you'll have to you have these two characters 
+    INFO 2021-06-02 20:10:10,752 you'll have to you have these two characters 
+    INFO 2021-06-02 20:10:12,850 这 两位 
+    INFO 2021-06-02 20:10:13,618 这 两位 一部分 
+    INFO 2021-06-02 20:10:13,822 这 两位 一步步 
+    INFO 2021-06-02 20:10:15,115 这 两位 一步步 
+    INFO 2021-06-02 20:10:16,639 and 
+    INFO 2021-06-02 20:10:16,903 elected 
+    INFO 2021-06-02 20:10:17,229 elected by 
+    INFO 2021-06-02 20:10:17,925 elected by geography 
+    INFO 2021-06-02 20:10:18,715 elected by geography 
+    INFO 2021-06-02 20:10:21,282 economics 
+    INFO 2021-06-02 20:10:22,092 economics 
+    INFO 2021-06-02 20:10:24,353 and 
+    INFO 2021-06-02 20:10:24,635 他 
+    INFO 2021-06-02 20:10:24,906 他 爱 
+    INFO 2021-06-02 20:10:25,137 and time is of 
+    INFO 2021-06-02 20:10:26,161 and time is up 
+    INFO 2021-06-02 20:10:27,013 选 
+    INFO 2021-06-02 20:10:28,304 选 
+    INFO 2021-06-02 20:10:32,875 我 也 
+    INFO 2021-06-02 20:10:33,115 what your mind 
+    INFO 2021-06-02 20:10:33,366 what your mind every 
+    INFO 2021-06-02 20:10:33,617 well you might have a 
+    INFO 2021-06-02 20:10:33,864 well you might have a stumper 
+    INFO 2021-06-02 20:10:34,129 well you might have a stuff for a while 
+    INFO 2021-06-02 20:10:34,432 well you might have a stumper 吗 
+    INFO 2021-06-02 20:10:34,924 well you might have a stuff for a while 
+    INFO 2021-06-02 20:10:35,916 and 
+    INFO 2021-06-02 20:10:36,196 and lee 
+    INFO 2021-06-02 20:10:36,411 and lee kuan 
+    INFO 2021-06-02 20:10:36,677 and lee kuan yew 
+    INFO 2021-06-02 20:10:36,988 and lee kuan yew wet 
+    INFO 2021-06-02 20:10:37,462 and lee kuan yew wept as 
+    INFO 2021-06-02 20:10:37,772 and lee kuan yew wept as he 
+    INFO 2021-06-02 20:10:38,303 and lee kuan yew wept as he announced 
+    INFO 2021-06-02 20:10:38,494 and lee kuan yew wept as he announced the 
+    INFO 2021-06-02 20:10:39,321 and lee kuan yew wept as he announced the separation 
+    INFO 2021-06-02 20:10:39,561 and lee kuan yew wept as he announced the separation of 
+    INFO 2021-06-02 20:10:40,038 and lee kuan yew wept as he announced the separation of singapore 
+    INFO 2021-06-02 20:10:40,339 and lee kuan yew wept as he announced the separation of singapore from 
+    INFO 2021-06-02 20:10:40,831 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-02 20:10:41,364 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-02 20:10:42,250 ninth 
+    INFO 2021-06-02 20:10:42,386 ninth august 
+    INFO 2021-06-02 20:10:43,434 ninth august nineteen 
+    INFO 2021-06-02 20:10:43,707 ninth august nineteen sixty 
+    INFO 2021-06-02 20:10:44,162 ninth august nineteen sixty five 
+    INFO 2021-06-02 23:01:05,109 Socket opened! <__main__.MyClient object at 0x10ac26b50> 
+    INFO 2021-06-02 23:01:05,110 Start transcribing... 
+    INFO 2021-06-02 23:01:06,134 尤其 
+    INFO 2021-06-02 23:01:06,241 有趣 的 
+    INFO 2021-06-02 23:01:06,514 游戏 的 
+    INFO 2021-06-02 23:01:06,747 you see the whole 
+    INFO 2021-06-02 23:01:07,018 you see the whole of 
+    INFO 2021-06-02 23:01:07,437 you see the whole of my 
+    INFO 2021-06-02 23:01:07,610 you see the whole of my kind of 
+    INFO 2021-06-02 23:01:07,804 you see the whole of my adult life 
+    INFO 2021-06-02 23:01:08,618 you see the whole of my adult life 
+    INFO 2021-06-02 23:01:14,222 嗯 
+    INFO 2021-06-02 23:01:15,257 being in 
+    INFO 2021-06-02 23:01:15,983 being in malaysia 
+    INFO 2021-06-02 23:01:16,336 being in malaysia and 
+    INFO 2021-06-02 23:01:16,595 being in malaysia and myanmar 
+    INFO 2021-06-02 23:01:16,810 being in malaysia and large 
+    INFO 2021-06-02 23:01:17,044 being in malaysia and larger 
+    INFO 2021-06-02 23:01:17,823 being in malaysia and larger 
+    INFO 2021-06-14 01:25:19,334 Socket opened! <__main__.MyClient object at 0x10fe74b80> 
+    INFO 2021-06-14 01:25:19,335 Start transcribing... 
+    INFO 2021-06-14 01:25:20,286 尤其 
+    INFO 2021-06-14 01:25:20,454 有趣 的 
+    INFO 2021-06-14 01:25:20,706 游戏 的 
+    INFO 2021-06-14 01:25:20,962 you see the whole 
+    INFO 2021-06-14 01:25:21,217 you see the whole of 
+    INFO 2021-06-14 01:25:21,551 you see the whole of my 
+    INFO 2021-06-14 01:25:21,767 you see the whole of my kind of 
+    INFO 2021-06-14 01:25:21,999 you see the whole of my adult life 
+    INFO 2021-06-14 01:25:22,822 you see the whole of my adult life 
+    INFO 2021-06-14 01:25:28,446 嗯 
+    INFO 2021-06-14 01:25:29,483 being in 
+    INFO 2021-06-14 01:25:30,237 being in malaysia 
+    INFO 2021-06-14 01:25:30,550 being in malaysia and 
+    INFO 2021-06-14 01:25:30,753 being in malaysia and myanmar 
+    INFO 2021-06-14 01:25:31,021 being in malaysia and large 
+    INFO 2021-06-14 01:25:31,265 being in malaysia and larger 
+    INFO 2021-06-14 01:25:32,022 being in malaysia and larger 
+    INFO 2021-06-14 01:25:32,917 就 在 
+    INFO 2021-06-14 01:25:33,069 有些 计划 
+    INFO 2021-06-14 01:25:33,357 you'll have to you have this 
+    INFO 2021-06-14 01:25:33,572 you'll have to you have to 
+    INFO 2021-06-14 01:25:33,814 you'll have to you have these two 
+    INFO 2021-06-14 01:25:34,168 you'll have to you have these two characters 
+    INFO 2021-06-14 01:25:34,834 you'll have to you have these two characters 
+    INFO 2021-06-14 01:25:36,962 这 两位 
+    INFO 2021-06-14 01:25:37,702 这 两位 一部分 
+    INFO 2021-06-14 01:25:37,938 这 两位 一步步 
+    INFO 2021-06-14 01:25:39,215 这 两位 一步步 
+    INFO 2021-06-14 01:25:40,764 and 
+    INFO 2021-06-14 01:25:41,032 elected 
+    INFO 2021-06-14 01:25:41,338 elected by 
+    INFO 2021-06-14 01:25:42,052 elected by geography 
+    INFO 2021-06-14 01:25:42,821 elected by geography 
+    INFO 2021-06-14 01:25:45,392 economics 
+    INFO 2021-06-14 01:25:46,209 economics 
+    INFO 2021-06-14 01:25:48,457 and 
+    INFO 2021-06-14 01:25:48,729 他 
+    INFO 2021-06-14 01:25:49,016 他 爱 
+    INFO 2021-06-14 01:25:49,248 and time is of 
+    INFO 2021-06-14 01:25:50,281 and time is up 
+    INFO 2021-06-14 01:25:51,142 选 
+    INFO 2021-06-14 01:25:52,411 选 
+    INFO 2021-06-14 01:25:56,979 我 也 
+    INFO 2021-06-14 01:25:57,183 what your mind 
+    INFO 2021-06-14 01:25:57,453 what your mind every 
+    INFO 2021-06-14 01:25:57,711 well you might have a 
+    INFO 2021-06-14 01:25:57,960 well you might have a stumper 
+    INFO 2021-06-14 01:25:58,214 well you might have a stuff for a while 
+    INFO 2021-06-14 01:25:58,559 well you might have a stumper 吗 
+    INFO 2021-06-14 01:25:59,028 well you might have a stuff for a while 
+    INFO 2021-06-14 01:26:00,020 and 
+    INFO 2021-06-14 01:26:00,279 and lee 
+    INFO 2021-06-14 01:26:00,532 and lee kuan 
+    INFO 2021-06-14 01:26:00,791 and lee kuan yew 
+    INFO 2021-06-14 01:26:01,107 and lee kuan yew wet 
+    INFO 2021-06-14 01:26:01,603 and lee kuan yew wept as 
+    INFO 2021-06-14 01:26:01,826 and lee kuan yew wept as he 
+    INFO 2021-06-14 01:26:02,381 and lee kuan yew wept as he announced 
+    INFO 2021-06-14 01:26:02,598 and lee kuan yew wept as he announced the 
+    INFO 2021-06-14 01:26:03,378 and lee kuan yew wept as he announced the separation 
+    INFO 2021-06-14 01:26:03,685 and lee kuan yew wept as he announced the separation of 
+    INFO 2021-06-14 01:26:04,154 and lee kuan yew wept as he announced the separation of singapore 
+    INFO 2021-06-14 01:26:04,394 and lee kuan yew wept as he announced the separation of singapore from 
+    INFO 2021-06-14 01:26:04,908 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-14 01:26:05,454 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-14 01:26:06,277 ninth 
+    INFO 2021-06-14 01:26:06,449 ninth august 
+    INFO 2021-06-14 01:26:07,532 ninth august nineteen 
+    INFO 2021-06-14 01:26:07,721 ninth august nineteen sixty 
+    INFO 2021-06-14 01:26:08,249 ninth august nineteen sixty five 
+    INFO 2021-06-14 01:26:09,005 ninth august nineteen sixty five 
+    INFO 2021-06-14 01:26:10,795 but 
+    INFO 2021-06-14 01:26:11,109 but why 
+    INFO 2021-06-14 01:26:11,846 but why 
+    INFO 2021-06-14 01:26:12,674 why would a 
+    INFO 2021-06-14 01:26:12,838 why would a man 
+    INFO 2021-06-14 01:26:13,953 why would a man who marked 
+    INFO 2021-06-14 01:26:14,121 why would a man who marked his 
+    INFO 2021-06-14 01:26:14,641 why would a man who marked his descent 
+    INFO 2021-06-14 01:26:15,421 why would a man who marked his descent not 
+    INFO 2021-06-14 01:26:15,667 why would a man who marked his descent not from 
+    INFO 2021-06-14 01:26:16,168 why would a man who marked his descent not from people in 
+    INFO 2021-06-14 01:26:16,479 why would a man who marked his descent not from people 
+    INFO 2021-06-14 01:26:16,682 why would a man who marked his descent not from people indigenous 
+    INFO 2021-06-14 01:26:16,945 why would a man who marked his descent not from people indigenous to 
+    INFO 2021-06-14 01:26:17,449 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-06-14 01:26:18,021 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-06-14 01:26:18,802 <unk> from 
+    INFO 2021-06-14 01:26:18,976 <unk> from people 
+    INFO 2021-06-14 01:26:19,236 <unk> from people in 
+    INFO 2021-06-14 01:26:19,746 <unk> from people in southern china 
+    INFO 2021-06-14 01:26:20,523 <unk> from people in southern china 
+    INFO 2021-06-14 01:26:21,152 come to 
+    INFO 2021-06-14 01:26:21,190 
+ URL: ws://20.195.33.0/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-06-14 01:26:21,190 
+------------------------
+Final Result: 
+ 
+    INFO 2021-06-14 01:26:21,190 you see the whole of my adult life 嗯 being in malaysia and larger you'll have to you have these two characters 这 两位 一步步 elected by geography economics and time is up 选 well you might have a stuff for a while and lee kuan yew wept as he announced the separation of singapore from malaysia ninth august nineteen sixty five but why why would a man who marked his descent not from people indigenous to malaya <unk> from people in southern china come to 
+    INFO 2021-06-14 12:59:24,422 Socket opened! <__main__.MyClient object at 0x106ec5b80> 
+    INFO 2021-06-14 12:59:24,424 Start transcribing... 
+    INFO 2021-06-14 12:59:25,364 尤其 
+    INFO 2021-06-14 12:59:25,530 有趣 的 
+    INFO 2021-06-14 12:59:25,788 游戏 的 
+    INFO 2021-06-14 12:59:26,044 you see the whole 
+    INFO 2021-06-14 12:59:26,301 you see the whole of 
+    INFO 2021-06-14 12:59:26,623 you see the whole of my 
+    INFO 2021-06-14 12:59:26,870 you see the whole of my kind of 
+    INFO 2021-06-14 12:59:27,079 you see the whole of my adult life 
+    INFO 2021-06-14 12:59:27,894 you see the whole of my adult life 
+    INFO 2021-06-14 12:59:33,800 嗯 
+    INFO 2021-06-14 12:59:34,992 being in 
+    INFO 2021-06-14 12:59:35,558 being in malaysia 
+    INFO 2021-06-14 12:59:35,687 being in malaysia and 
+    INFO 2021-06-14 12:59:35,786 being in malaysia and myanmar 
+    INFO 2021-06-14 12:59:36,057 being in malaysia and large 
+    INFO 2021-06-14 12:59:36,310 being in malaysia and larger 
+    INFO 2021-06-14 12:59:37,075 being in malaysia and larger 
+    INFO 2021-06-14 12:59:37,947 就 在 
+    INFO 2021-06-14 12:59:38,130 有些 计划 
+    INFO 2021-06-14 12:59:38,417 you'll have to you have this 
+    INFO 2021-06-14 12:59:38,626 you'll have to you have to 
+    INFO 2021-06-14 12:59:38,887 you'll have to you have these two 
+    INFO 2021-06-14 12:59:39,202 you'll have to you have these two characters 
+    INFO 2021-06-14 12:59:39,908 you'll have to you have these two characters 
+    INFO 2021-06-14 12:59:42,014 这 两位 
+    INFO 2021-06-14 12:59:42,745 这 两位 一部分 
+    INFO 2021-06-14 12:59:42,976 这 两位 一步步 
+    INFO 2021-06-14 12:59:44,261 这 两位 一步步 
+    INFO 2021-06-14 12:59:45,792 and 
+    INFO 2021-06-14 12:59:46,065 elected 
+    INFO 2021-06-14 12:59:46,355 elected by 
+    INFO 2021-06-14 12:59:47,077 elected by geography 
+    INFO 2021-06-14 12:59:47,845 elected by geography 
+    INFO 2021-06-14 12:59:50,410 economics 
+    INFO 2021-06-14 12:59:51,230 economics 
+    INFO 2021-06-14 12:59:53,511 and 
+    INFO 2021-06-14 12:59:53,784 他 
+    INFO 2021-06-14 12:59:54,065 他 爱 
+    INFO 2021-06-14 12:59:54,285 and time is of 
+    INFO 2021-06-14 12:59:55,320 and time is up 
+    INFO 2021-06-14 12:59:56,177 选 
+    INFO 2021-06-14 12:59:57,434 选 
+    INFO 2021-06-14 13:00:02,040 我 也 
+    INFO 2021-06-14 13:00:02,244 what your mind 
+    INFO 2021-06-14 13:00:02,505 what your mind every 
+    INFO 2021-06-14 13:00:02,769 well you might have a 
+    INFO 2021-06-14 13:00:03,018 well you might have a stumper 
+    INFO 2021-06-14 13:00:03,282 well you might have a stuff for a while 
+    INFO 2021-06-14 13:00:03,606 well you might have a stumper 吗 
+    INFO 2021-06-14 13:00:04,061 well you might have a stuff for a while 
+    INFO 2021-06-14 13:00:05,058 and 
+    INFO 2021-06-14 13:00:05,314 and lee 
+    INFO 2021-06-14 13:00:05,566 and lee kuan 
+    INFO 2021-06-14 13:00:05,820 and lee kuan yew 
+    INFO 2021-06-14 13:00:06,133 and lee kuan yew wet 
+    INFO 2021-06-14 13:00:06,598 and lee kuan yew wept as 
+    INFO 2021-06-14 13:00:06,859 and lee kuan yew wept as he 
+    INFO 2021-06-14 13:00:07,420 and lee kuan yew wept as he announced 
+    INFO 2021-06-14 13:00:07,635 and lee kuan yew wept as he announced the 
+    INFO 2021-06-14 13:00:08,416 and lee kuan yew wept as he announced the separation 
+    INFO 2021-06-14 13:00:08,709 and lee kuan yew wept as he announced the separation of 
+    INFO 2021-06-14 13:00:09,179 and lee kuan yew wept as he announced the separation of singapore 
+    INFO 2021-06-14 13:00:09,425 and lee kuan yew wept as he announced the separation of singapore from 
+    INFO 2021-06-14 13:00:09,946 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-14 13:00:10,468 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-14 13:00:11,301 ninth 
+    INFO 2021-06-14 13:00:11,486 ninth august 
+    INFO 2021-06-14 13:00:12,573 ninth august nineteen 
+    INFO 2021-06-14 13:00:12,758 ninth august nineteen sixty 
+    INFO 2021-06-14 13:00:13,296 ninth august nineteen sixty five 
+    INFO 2021-06-14 13:00:14,054 ninth august nineteen sixty five 
+    INFO 2021-06-14 13:00:15,844 but 
+    INFO 2021-06-14 13:00:16,160 but why 
+    INFO 2021-06-14 13:00:16,881 but why 
+    INFO 2021-06-14 13:00:17,725 why would a 
+    INFO 2021-06-14 13:00:17,916 why would a man 
+    INFO 2021-06-14 13:00:18,999 why would a man who marked 
+    INFO 2021-06-14 13:00:19,206 why would a man who marked his 
+    INFO 2021-06-14 13:00:19,722 why would a man who marked his descent 
+    INFO 2021-06-14 13:00:20,508 why would a man who marked his descent not 
+    INFO 2021-06-14 13:00:20,746 why would a man who marked his descent not from 
+    INFO 2021-06-14 13:00:21,270 why would a man who marked his descent not from people in 
+    INFO 2021-06-14 13:00:21,564 why would a man who marked his descent not from people 
+    INFO 2021-06-14 13:00:21,781 why would a man who marked his descent not from people indigenous 
+    INFO 2021-06-14 13:00:22,037 why would a man who marked his descent not from people indigenous to 
+    INFO 2021-06-14 13:00:22,553 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-06-14 13:00:23,137 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-06-14 13:00:23,917 <unk> from 
+    INFO 2021-06-14 13:00:24,095 <unk> from people 
+    INFO 2021-06-14 13:00:24,362 <unk> from people in 
+    INFO 2021-06-14 13:00:24,883 <unk> from people in southern china 
+    INFO 2021-06-14 13:00:25,645 <unk> from people in southern china 
+    INFO 2021-06-14 13:00:26,256 come to 
+    INFO 2021-06-14 13:00:26,310 
+ URL: ws://20.198.195.24/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-06-14 13:00:26,310 
+------------------------
+Final Result: 
+ 
+    INFO 2021-06-14 13:00:26,310 you see the whole of my adult life 嗯 being in malaysia and larger you'll have to you have these two characters 这 两位 一步步 elected by geography economics and time is up 选 well you might have a stuff for a while and lee kuan yew wept as he announced the separation of singapore from malaysia ninth august nineteen sixty five but why why would a man who marked his descent not from people indigenous to malaya <unk> from people in southern china come to 
+    INFO 2021-06-14 18:34:13,387 Socket opened! <__main__.MyClient object at 0x103119c10> 
+    INFO 2021-06-14 18:34:13,388 Start transcribing... 
+    INFO 2021-06-14 18:34:14,355 尤其 
+    INFO 2021-06-14 18:34:14,526 有趣 的 
+    INFO 2021-06-14 18:34:14,793 游戏 的 
+    INFO 2021-06-14 18:34:15,028 you see the whole 
+    INFO 2021-06-14 18:34:15,296 you see the whole of 
+    INFO 2021-06-14 18:34:15,632 you see the whole of my 
+    INFO 2021-06-14 18:34:15,846 you see the whole of my kind of 
+    INFO 2021-06-14 18:34:16,081 you see the whole of my adult life 
+    INFO 2021-06-23 01:09:23,968 Socket opened! <__main__.MyClient object at 0x10e26ebb0> 
+    INFO 2021-06-23 01:09:23,969 Start transcribing... 
+    INFO 2021-06-23 01:09:23,975 Received error from server (status 9) 
+    INFO 2021-06-23 01:09:23,976 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-06-23 01:09:23,981 
+ URL: ws://35.240.231.87/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-06-23 01:09:23,982 
+------------------------
+Final Result: 
+ 
+    INFO 2021-06-23 01:09:23,983  
+    INFO 2021-06-23 01:10:03,878 Socket opened! <__main__.MyClient object at 0x1110a2bb0> 
+    INFO 2021-06-23 01:10:03,880 Start transcribing... 
+    INFO 2021-06-23 01:10:03,887 Received error from server (status 9) 
+    INFO 2021-06-23 01:10:03,888 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-06-23 01:10:03,889 
+ URL: ws://35.240.231.87/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-06-23 01:10:03,890 
+------------------------
+Final Result: 
+ 
+    INFO 2021-06-23 01:10:03,890  
+    INFO 2021-06-23 01:14:57,129 Socket opened! <__main__.MyClient object at 0x10a1bdbb0> 
+    INFO 2021-06-23 01:14:57,131 Start transcribing... 
+    INFO 2021-06-23 01:14:58,110 尤其 
+    INFO 2021-06-23 01:14:58,250 有趣 的 
+    INFO 2021-06-23 01:14:58,518 游戏 的 
+    INFO 2021-06-23 01:14:58,762 you see the whole 
+    INFO 2021-06-23 01:14:59,017 you see the whole of 
+    INFO 2021-06-23 01:14:59,375 you see the whole of my 
+    INFO 2021-06-23 01:14:59,612 you see the whole of my kind of 
+    INFO 2021-06-23 01:14:59,809 you see the whole of my adult life 
+    INFO 2021-06-23 01:15:00,620 you see the whole of my adult life 
+    INFO 2021-06-23 01:15:06,209 嗯 
+    INFO 2021-06-23 01:15:07,266 being in 
+    INFO 2021-06-23 01:15:07,982 being in malaysia 
+    INFO 2021-06-23 01:15:08,318 being in malaysia and 
+    INFO 2021-06-23 01:15:08,522 being in malaysia and myanmar 
+    INFO 2021-06-23 01:15:08,789 being in malaysia and large 
+    INFO 2021-06-23 01:15:09,033 being in malaysia and larger 
+    INFO 2021-06-23 01:15:09,783 being in malaysia and larger 
+    INFO 2021-06-23 01:15:10,679 就 在 
+    INFO 2021-06-23 01:15:10,853 有些 计划 
+    INFO 2021-06-23 01:15:11,170 you'll have to you have this 
+    INFO 2021-06-23 01:15:11,347 you'll have to you have to 
+    INFO 2021-06-23 01:15:11,580 you'll have to you have these two 
+    INFO 2021-06-23 01:15:11,928 you'll have to you have these two characters 
+    INFO 2021-06-23 01:15:12,611 you'll have to you have these two characters 
+    INFO 2021-06-23 01:15:14,737 这 两位 
+    INFO 2021-06-23 01:15:15,459 这 两位 一部分 
+    INFO 2021-06-23 01:15:15,673 这 两位 一步步 
+    INFO 2021-06-23 01:15:16,963 这 两位 一步步 
+    INFO 2021-06-23 01:15:18,497 and 
+    INFO 2021-06-23 01:15:18,764 elected 
+    INFO 2021-06-23 01:15:19,068 elected by 
+    INFO 2021-06-23 01:15:19,764 elected by geography 
+    INFO 2021-06-23 01:15:20,534 elected by geography 
+    INFO 2021-06-23 01:15:23,094 economics 
+    INFO 2021-06-23 01:15:23,948 economics 
+    INFO 2021-06-23 01:15:26,155 and 
+    INFO 2021-06-23 01:15:26,429 他 
+    INFO 2021-06-23 01:15:26,858 他 爱 
+    INFO 2021-06-23 01:15:26,953 and time is of 
+    INFO 2021-06-23 01:15:27,962 and time is up 
+    INFO 2021-06-23 01:15:28,837 选 
+    INFO 2021-06-23 01:15:30,122 选 
+    INFO 2021-06-23 01:15:34,693 我 也 
+    INFO 2021-06-23 01:15:34,898 what your mind 
+    INFO 2021-06-23 01:15:35,183 what your mind every 
+    INFO 2021-06-23 01:15:35,430 well you might have a 
+    INFO 2021-06-23 01:15:35,674 well you might have a stumper 
+    INFO 2021-06-23 01:15:36,013 well you might have a stuff for a while 
+    INFO 2021-06-23 01:15:36,273 well you might have a stumper 吗 
+    INFO 2021-06-23 01:15:36,733 well you might have a stuff for a while 
+    INFO 2021-06-23 01:15:37,705 and 
+    INFO 2021-06-23 01:15:37,963 and lee 
+    INFO 2021-06-23 01:15:38,212 and lee kuan 
+    INFO 2021-06-23 01:15:38,469 and lee kuan yew 
+    INFO 2021-06-23 01:15:38,912 and lee kuan yew wet 
+    INFO 2021-06-23 01:15:39,245 and lee kuan yew wept as 
+    INFO 2021-06-23 01:15:39,503 and lee kuan yew wept as he 
+    INFO 2021-06-23 01:15:40,064 and lee kuan yew wept as he announced 
+    INFO 2021-06-23 01:15:40,278 and lee kuan yew wept as he announced the 
+    INFO 2021-06-23 01:15:41,062 and lee kuan yew wept as he announced the separation 
+    INFO 2021-06-23 01:15:41,360 and lee kuan yew wept as he announced the separation of 
+    INFO 2021-06-23 01:15:41,819 and lee kuan yew wept as he announced the separation of singapore 
+    INFO 2021-06-23 01:15:42,063 and lee kuan yew wept as he announced the separation of singapore from 
+    INFO 2021-06-23 01:15:42,578 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-23 01:15:43,102 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-06-23 01:15:43,960 ninth 
+    INFO 2021-06-23 01:15:44,108 ninth august 
+    INFO 2021-06-23 01:15:45,222 ninth august nineteen 
+    INFO 2021-06-23 01:15:45,396 ninth august nineteen sixty 
+    INFO 2021-06-23 01:15:45,923 ninth august nineteen sixty five 
+    INFO 2021-06-23 01:15:46,673 ninth august nineteen sixty five 
+    INFO 2021-06-23 01:15:48,477 but 
+    INFO 2021-06-23 01:15:48,903 but why 
+    INFO 2021-06-23 01:15:49,497 but why 
+    INFO 2021-06-23 01:15:50,361 why would a 
+    INFO 2021-06-23 01:15:50,542 why would a man 
+    INFO 2021-06-23 01:15:51,684 why would a man who marked 
+    INFO 2021-06-23 01:15:51,800 why would a man who marked his 
+    INFO 2021-06-23 01:15:52,309 why would a man who marked his descent 
+    INFO 2021-06-23 01:15:53,092 why would a man who marked his descent not 
+    INFO 2021-06-23 01:15:53,323 why would a man who marked his descent not from 
+    INFO 2021-06-23 01:15:53,838 why would a man who marked his descent not from people in 
+    INFO 2021-06-23 01:15:54,147 why would a man who marked his descent not from people 
+    INFO 2021-06-23 01:15:54,361 why would a man who marked his descent not from people indigenous 
+    INFO 2021-06-23 01:15:54,752 why would a man who marked his descent not from people indigenous to 
+    INFO 2021-06-23 01:15:55,130 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-06-23 01:15:55,697 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-06-23 01:15:56,501 <unk> from 
+    INFO 2021-06-23 01:15:56,651 <unk> from people 
+    INFO 2021-06-23 01:15:56,909 <unk> from people in 
+    INFO 2021-06-23 01:15:57,427 <unk> from people in southern china 
+    INFO 2021-06-23 01:15:58,211 <unk> from people in southern china 
+    INFO 2021-06-23 01:15:58,859 come to 
+    INFO 2021-06-23 01:15:58,893 
+ URL: ws://35.240.231.87/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-06-23 01:15:58,893 
+------------------------
+Final Result: 
+ 
+    INFO 2021-06-23 01:15:58,893 you see the whole of my adult life 嗯 being in malaysia and larger you'll have to you have these two characters 这 两位 一步步 elected by geography economics and time is up 选 well you might have a stuff for a while and lee kuan yew wept as he announced the separation of singapore from malaysia ninth august nineteen sixty five but why why would a man who marked his descent not from people indigenous to malaya <unk> from people in southern china come to 
+    INFO 2021-07-18 03:24:13,545 Socket opened! <__main__.MyClient object at 0x1103adc70> 
+    INFO 2021-07-18 03:24:13,547 Start transcribing... 
+    INFO 2021-07-18 03:24:13,551 Received error from server (status 9) 
+    INFO 2021-07-18 03:24:13,551 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-07-18 03:24:13,564 
+ URL: ws://a22e84a655a654f2098dabb68a8ca164-1432166543.ap-southeast-1.elb.amazonaws.com/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-07-18 03:24:13,566 
+------------------------
+Final Result: 
+ 
+    INFO 2021-07-18 03:24:13,566  
+    INFO 2021-07-20 23:18:12,926 Socket opened! <__main__.MyClient object at 0x104cf9ca0> 
+    INFO 2021-07-20 23:18:12,928 Start transcribing... 
+    INFO 2021-07-20 23:18:13,882 尤其 
+    INFO 2021-07-20 23:18:14,047 有趣 的 
+    INFO 2021-07-20 23:18:14,309 游戏 的 
+    INFO 2021-07-20 23:18:14,563 you see the whole 
+    INFO 2021-07-20 23:18:14,823 you see the whole of 
+    INFO 2021-07-20 23:18:15,172 you see the whole of my 
+    INFO 2021-07-20 23:18:15,386 you see the whole of my kind of 
+    INFO 2021-07-20 23:18:15,605 you see the whole of my adult life 
+    INFO 2021-07-20 23:18:16,432 you see the whole of my adult life 
+    INFO 2021-07-20 23:18:22,038 嗯 
+    INFO 2021-07-20 23:18:23,079 being in 
+    INFO 2021-07-20 23:18:23,824 being in malaysia 
+    INFO 2021-07-20 23:18:24,159 being in malaysia and 
+    INFO 2021-07-20 23:18:24,362 being in malaysia and myanmar 
+    INFO 2021-07-20 23:18:24,631 being in malaysia and large 
+    INFO 2021-07-20 23:18:24,878 being in malaysia and larger 
+    INFO 2021-07-20 23:18:25,639 being in malaysia and larger 
+    INFO 2021-07-20 23:18:26,530 就 在 
+    INFO 2021-07-20 23:18:26,697 有些 计划 
+    INFO 2021-07-20 23:18:26,998 you'll have to you have this 
+    INFO 2021-07-20 23:18:27,201 you'll have to you have to 
+    INFO 2021-07-20 23:18:27,439 you'll have to you have these two 
+    INFO 2021-07-20 23:18:27,780 you'll have to you have these two characters 
+    INFO 2021-07-20 23:18:28,474 you'll have to you have these two characters 
+    INFO 2021-07-20 23:18:30,620 这 两位 
+    INFO 2021-07-20 23:18:31,342 这 两位 一部分 
+    INFO 2021-07-20 23:18:31,571 这 两位 一步步 
+    INFO 2021-07-20 23:18:32,857 这 两位 一步步 
+    INFO 2021-07-20 23:18:34,387 and 
+    INFO 2021-07-20 23:18:34,651 elected 
+    INFO 2021-07-20 23:18:34,958 elected by 
+    INFO 2021-07-20 23:18:35,663 elected by geography 
+    INFO 2021-07-20 23:18:36,440 elected by geography 
+    INFO 2021-07-20 23:18:39,016 economics 
+    INFO 2021-07-20 23:18:39,838 economics 
+    INFO 2021-07-20 23:18:42,116 and 
+    INFO 2021-07-20 23:18:42,382 他 
+    INFO 2021-07-20 23:18:42,812 他 爱 
+    INFO 2021-07-20 23:18:42,897 and time is of 
+    INFO 2021-07-20 23:18:43,921 and time is up 
+    INFO 2021-07-20 23:18:44,797 选 
+    INFO 2021-07-20 23:18:46,068 选 
+    INFO 2021-07-20 23:18:50,657 我 也 
+    INFO 2021-07-20 23:18:50,861 what your mind 
+    INFO 2021-07-20 23:18:51,128 what your mind every 
+    INFO 2021-07-20 23:18:51,386 well you might have a 
+    INFO 2021-07-20 23:18:51,634 well you might have a stumper 
+    INFO 2021-07-20 23:18:51,891 well you might have a stuff for a while 
+    INFO 2021-07-20 23:18:52,243 well you might have a stumper 吗 
+    INFO 2021-07-20 23:18:52,704 well you might have a stuff for a while 
+    INFO 2021-07-20 23:18:53,680 and 
+    INFO 2021-07-20 23:18:53,941 and lee 
+    INFO 2021-07-20 23:18:54,188 and lee kuan 
+    INFO 2021-07-20 23:18:54,446 and lee kuan yew 
+    INFO 2021-07-20 23:18:54,774 and lee kuan yew wet 
+    INFO 2021-07-20 23:18:55,224 and lee kuan yew wept as 
+    INFO 2021-07-20 23:18:55,480 and lee kuan yew wept as he 
+    INFO 2021-07-20 23:18:56,043 and lee kuan yew wept as he announced 
+    INFO 2021-07-20 23:18:56,254 and lee kuan yew wept as he announced the 
+    INFO 2021-07-20 23:18:57,045 and lee kuan yew wept as he announced the separation 
+    INFO 2021-07-20 23:18:57,350 and lee kuan yew wept as he announced the separation of 
+    INFO 2021-07-20 23:18:57,804 and lee kuan yew wept as he announced the separation of singapore 
+    INFO 2021-07-20 23:18:58,053 and lee kuan yew wept as he announced the separation of singapore from 
+    INFO 2021-07-20 23:18:58,575 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-07-20 23:18:59,103 and lee kuan yew wept as he announced the separation of singapore from malaysia 
+    INFO 2021-07-20 23:18:59,961 ninth 
+    INFO 2021-07-20 23:19:00,112 ninth august 
+    INFO 2021-07-20 23:19:01,214 ninth august nineteen 
+    INFO 2021-07-20 23:19:01,399 ninth august nineteen sixty 
+    INFO 2021-07-20 23:19:01,926 ninth august nineteen sixty five 
+    INFO 2021-07-20 23:19:02,673 ninth august nineteen sixty five 
+    INFO 2021-07-20 23:19:04,476 but 
+    INFO 2021-07-20 23:19:04,793 but why 
+    INFO 2021-07-20 23:19:05,512 but why 
+    INFO 2021-07-20 23:19:06,375 why would a 
+    INFO 2021-07-20 23:19:06,529 why would a man 
+    INFO 2021-07-20 23:19:07,629 why would a man who marked 
+    INFO 2021-07-20 23:19:07,822 why would a man who marked his 
+    INFO 2021-07-20 23:19:08,340 why would a man who marked his descent 
+    INFO 2021-07-20 23:19:09,129 why would a man who marked his descent not 
+    INFO 2021-07-20 23:19:09,367 why would a man who marked his descent not from 
+    INFO 2021-07-20 23:19:09,889 why would a man who marked his descent not from people in 
+    INFO 2021-07-20 23:19:10,199 why would a man who marked his descent not from people 
+    INFO 2021-07-20 23:19:10,407 why would a man who marked his descent not from people indigenous 
+    INFO 2021-07-20 23:19:10,660 why would a man who marked his descent not from people indigenous to 
+    INFO 2021-07-20 23:19:11,174 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-07-20 23:19:11,748 why would a man who marked his descent not from people indigenous to malaya 
+    INFO 2021-07-20 23:19:12,541 <unk> from 
+    INFO 2021-07-20 23:19:12,704 <unk> from people 
+    INFO 2021-07-20 23:19:12,973 <unk> from people in 
+    INFO 2021-07-20 23:19:13,495 <unk> from people in southern china 
+    INFO 2021-07-20 23:19:14,257 <unk> from people in southern china 
+    INFO 2021-07-20 23:19:14,951 come to 
+    INFO 2021-07-20 23:19:14,975 
+ URL: ws://afb6eb85e132b4e6bbebbda3c7425566-1587507829.ap-southeast-1.elb.amazonaws.com/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-07-20 23:19:14,975 
+------------------------
+Final Result: 
+ 
+    INFO 2021-07-20 23:19:14,975 you see the whole of my adult life 嗯 being in malaysia and larger you'll have to you have these two characters 这 两位 一步步 elected by geography economics and time is up 选 well you might have a stuff for a while and lee kuan yew wept as he announced the separation of singapore from malaysia ninth august nineteen sixty five but why why would a man who marked his descent not from people indigenous to malaya <unk> from people in southern china come to 
+    INFO 2021-07-23 18:57:23,799 Socket opened! <__main__.MyClient object at 0x110747d00> 
+    INFO 2021-07-23 18:57:23,800 Start transcribing... 
+    INFO 2021-07-23 18:57:24,780 尤其 
+    INFO 2021-07-23 18:57:24,933 有趣 的 
+    INFO 2021-07-23 18:57:25,197 游戏 的 
+    INFO 2021-07-23 18:57:25,442 you see the whole 
+    INFO 2021-07-23 18:57:25,696 you see the whole of 
+    INFO 2021-07-23 18:57:26,044 you see the whole of my 
+    INFO 2021-07-23 18:57:26,274 you see the whole of my kind of 
+    INFO 2021-07-23 18:57:26,484 you see the whole of my adult life 
+    INFO 2021-07-23 18:57:27,326 you see the whole of my adult life 
+    INFO 2021-07-24 17:23:44,462 Socket opened! <__main__.MyClient object at 0x10dc9adc0> 
+    INFO 2021-07-24 17:23:44,464 Start transcribing... 
+    INFO 2021-07-24 17:23:44,480 Received error from server (status 9) 
+    INFO 2021-07-24 17:23:44,480 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-07-24 17:23:44,481 
+ URL: ws://20.198.190.243/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-07-24 17:23:44,481 
+------------------------
+Final Result: 
+ 
+    INFO 2021-07-24 17:23:44,482  
+    INFO 2021-07-24 17:24:01,013 Socket opened! <__main__.MyClient object at 0x1106fddc0> 
+    INFO 2021-07-24 17:24:01,014 Start transcribing... 
+    INFO 2021-07-24 17:24:01,021 Received error from server (status 9) 
+    INFO 2021-07-24 17:24:01,026 Error message: No decoder available, try again 60 seconds later 
+    INFO 2021-07-24 17:24:01,027 
+ URL: ws://20.198.190.243/client/ws/speech?content-type=?token=abc
+ 
+    INFO 2021-07-24 17:24:01,027 
+------------------------
+Final Result: 
+ 
+    INFO 2021-07-24 17:24:01,028  
+    INFO 2021-07-24 17:25:42,687 Socket opened! <__main__.MyClient object at 0x10511edc0> 
+    INFO 2021-07-24 17:25:42,688 Start transcribing... 
+    INFO 2021-07-24 17:25:43,634 尤其 
+    INFO 2021-07-24 17:25:43,801 有趣 的 
+    INFO 2021-07-24 17:25:44,060 游戏 的 
+    INFO 2021-07-24 17:25:44,317 you see the whole 
+    INFO 2021-07-24 17:25:44,578 you see the whole of 
+    INFO 2021-07-24 17:25:44,898 you see the whole of my 
+    INFO 2021-07-24 17:25:45,128 you see the whole of my kind of 
+    INFO 2021-07-24 17:25:45,352 you see the whole of my adult life 
+    INFO 2021-07-24 17:25:46,180 you see the whole of my adult life 
+    INFO 2021-07-24 17:25:51,783 嗯 
+    INFO 2021-07-24 17:25:52,842 being in 
+    INFO 2021-07-24 17:25:53,582 being in malaysia 
+    INFO 2021-07-24 17:25:53,892 being in malaysia and 
+    INFO 2021-07-24 17:25:54,111 being in malaysia and myanmar 
+    INFO 2021-07-24 19:20:21,499 Socket opened! <__main__.MyClient object at 0x109651df0> 
+    INFO 2021-07-24 19:20:21,500 Start transcribing... 
+    INFO 2021-07-24 19:20:22,455 尤其 
+    INFO 2021-07-24 19:20:22,616 有趣 的 
+    INFO 2021-07-24 19:20:22,881 游戏 的 
+    INFO 2021-07-24 19:20:23,130 you see the whole 
+    INFO 2021-07-24 19:20:23,385 you see the whole of 
+    INFO 2021-07-24 19:20:23,735 you see the whole of my 
+    INFO 2021-07-24 19:20:23,949 you see the whole of my kind of 
+    INFO 2021-07-24 19:20:24,173 you see the whole of my adult life 
+    INFO 2021-07-24 19:20:25,002 you see the whole of my adult life 

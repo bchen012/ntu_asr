@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-azure_pv-provisioning
+  annotations:
+    volume.beta.kubernetes.io/storage-class: managed-premium
+  labels:
+    demo: nfs-azure_pv-provisioning
+spec:
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 20Gi
