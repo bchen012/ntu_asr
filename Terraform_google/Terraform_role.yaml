@@ -1,0 +1,16 @@
+title: "Terraform role"
+description: "My custom Terraform role."
+stage: "ALPHA"
+includedPermissions:
+- compute.instanceGroupManagers.get
+- container.clusters.create
+- container.clusters.delete
+- container.clusters.get
+- container.clusters.list
+- container.clusters.update
+- file.instances.create
+- file.instances.delete
+- file.instances.get
+- file.instances.list
+- iam.serviceAccounts.get
+- container.operations.get
