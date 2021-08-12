@@ -1,0 +1,132 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ntuspeechlab.master.name" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "ntuspeechlab.master.name" . }}
+    helm.sh/chart: {{ include "ntuspeechlab.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "ntuspeechlab.master.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8081'
+      labels:
+        app.kubernetes.io/name: {{ include "ntuspeechlab.master.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.image.pullSecrets }}
+      containers:
+        - name: {{ include "ntuspeechlab.master.name" . }}
+          image: {{ .Values.image.repository }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: [{{ include "ntuspeechlab.master.command" . }}]
+          envFrom:
+          - secretRef:
+              name: environment-variables-master-secret
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: prometheus
+              containerPort: 8081
+#          resources:
+#            limits:
+#              cpu: 1
+#              memory: "2Gi"
+#            requests:
+#              cpu: 0.8
+#              memory: "1Gi"
+          livenessProbe:
+            httpGet:
+              path: /
+              {{- if eq .Values.service.enablehttps true}}
+              scheme: HTTPS
+              port: 8080
+              {{- else }}
+              port: http
+              {{- end}}
+            periodSeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /
+              {{- if eq .Values.service.enablehttps true}}
+              scheme: HTTPS
+              port: 8080
+              {{- else }}
+              port: http
+              {{- end}}
+            periodSeconds: 60
+    
+
+{{- range $model_name, $replicas := .Values.models }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ntuspeechlab.worker.name" $ }}{{ printf "-%s" $model_name | lower | replace "_" "-"  }}
+  labels:
+    app.kubernetes.io/name: {{ include "ntuspeechlab.worker.name" $ }}{{ printf "-%s" $model_name | lower | replace "_" "-" }}
+    helm.sh/chart: {{ include "ntuspeechlab.chart" $ }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service }}
+spec:
+  replicas: {{ $replicas }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "ntuspeechlab.worker.name" $ }}{{ printf "-%s" $model_name  | lower | replace "_" "-"}}
+      app.kubernetes.io/instance: {{ $.Release.Name }}
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '8081'
+      labels:
+        app.kubernetes.io/name: {{ include "ntuspeechlab.worker.name" $ }}{{ printf "-%s" $model_name | lower | replace "_" "-" }}
+        app.kubernetes.io/instance: {{ $.Release.Name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ $.Values.image.pullSecrets }}
+      containers:
+        - name: {{ include "ntuspeechlab.worker.name" $ }}{{ printf "-%s" $model_name | lower  | replace "_" "-"}}
+          image: {{ $.Values.image.repository }}
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          command: [{{ include "ntuspeechlab.worker.command" $ }}]
+          envFrom:
+          - secretRef:
+              name: environment-variables-workers-secret
+          ports:
+            - name: prometheus
+              containerPort: 8081
+#          resources:
+#            limits:
+#              cpu: 0.8
+#              memory: "4Gi"
+#            requests:
+#              cpu: 0.5
+#              memory: "3Gi"
+          env:
+          - name: MODEL_DIR
+            value: {{ $model_name }}
+          securityContext:
+#            runAsUser: 0
+            privileged: true
+            capabilities:
+              add: ["SYS_ADMIN"]
+          volumeMounts:
+          - name: mypvc
+            mountPath: /home/appuser/opt/models
+
+      volumes:
+        - name: mypvc
+          persistentVolumeClaim:
+            claimName: {{ $.Values.fileshare.claimName }}
+{{- end }}

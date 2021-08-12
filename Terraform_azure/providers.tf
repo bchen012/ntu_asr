@@ -10,8 +10,3 @@ provider "azurerm" {
   features {}
 
 }
-
-terraform {
-  backend "http" {
-  }
-}

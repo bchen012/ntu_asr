@@ -1,13 +1,11 @@
 models:
-#  English_0919_8k: 3
-  CS_09AM_8k: 1
-  Mandarin_09AM_8k: 0
+  SingaporeCS_0519NNET3: 1
+  SingaporeMandarin_0519NNET3: 0
   
 image:
-  repository: ntuspeechlab2.azurecr.io/online-baseline
-  tag: latest
+  repository: registry.gitlab.com/benjaminc8121/ntu_asr/staging:latest
   pullPolicy: Always
-  pullSecrets: azure_template-cr-secret
+  pullSecrets: regcred
 
 nameOverride: ""
 fullnameOverride: ""
@@ -16,7 +14,7 @@ service:
   type: LoadBalancer
   port: 8080
   resourceGroup: ntu-online-scaled
-  loadBalancerIP: STATIC_IP_ADDRESS
+#  loadBalancerIP: 20.97.51.248
   enablehttps: false
 
 commands:
@@ -31,6 +29,4 @@ commands:
       - '"--"'
       - '"/home/appuser/opt/start_worker.sh"'
 fileshare:
-  secretName: models-files-secret
-  shareName: online-models
-
+  claimName: fileserver-claim

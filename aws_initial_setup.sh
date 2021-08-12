@@ -23,7 +23,7 @@ cd ..
 
 
 export GITLAB_USERNAME=benjaminc8121
-export GITLAB_PASSWORD=0291012IpMs!
+export GITLAB_PASSWORD=PASSWORD
 export GITLAB_EMAIL=benjaminc8121@gmail.com
 export KUBE_NAME=sgdecoding-online-scaled
 export NAMESPACE=ntuasr-production-aws
@@ -77,6 +77,6 @@ curl  -X PUT -T client/audio/episode-1-introduction-and-origins.wav --header "mo
 # 1. connect aks to gitlab
 kubectl cluster-info | grep -E 'Kubernetes master|Kubernetes control plane' | awk '/http/ {print $NF}'
 kubectl get secret
-kubectl get secret default-token-67xtv -o jsonpath="{['data']['ca\.crt']}" | base64 --decode
-kubectl apply -f gitlab-admin-service-account.yaml
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep gitlab | awk '{print $1}')
+kubectl get secret default-token-cqdql -o jsonpath="{['data']['ca\.crt']}" | base64 --decode
+kubectl apply -f jenkins-admin-service-account.yaml
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep jenkins | awk '{print $1}')

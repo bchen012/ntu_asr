@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Config
+users:
+- name: jenkins
+  user:
+    token: eyJhbGciOiJSUzI1NiIsImtpZCI6Im1XdWwwMTRaR3l5Ulh4c2Z6N3FpcDdmWTFIRWh0YXY0MTBFVWpNNXRPekEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJqZW5raW5zLXRva2VuLXY3dDl2Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImplbmtpbnMiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIzYjFiYTJkOS1mOGE1LTQyNjQtYTIzMC03ZGQxMDk1OGI4NzIiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06amVua2lucyJ9.XE_3N-kaoebdRK3LmJWdnBB6P-T0QqTGs26VFlsLKM2RZqJae8iWN7IH2XUq4uQElNeZg1DIPQkVfxXBUsmFaDnu-hjBkiD_ffWUSE3R24rEDMhtELM0XEpBoWaBbf2xdsKdkWRH90C93BAuG9XZfxA3dOTjeYjbkD9VkhPQoKuZFMykqd49rJuxUHzftkTom3TPSS4h2TNaFDGwp3UV84vNVznI9FpvhLpEtBMOUqJ7Z2ULgEt5kluiMc7_g4OM1a5Xvkpoyk1dKT4YEUjZpnuTWQqZ3hL7pn-VFe2OvtcuDx_fQ4QlACsx1zfKGTzRDXx_oSX3lYlqCKi_GUdVMYt2eQXZrtjud7lmP88YnbxoXpAoSIKO4GYfCGKa1K2Aa7SaWRSp1rgX8D0oz4bXDSJA7OAhII_1a843M4q-UgH6G4AXlRHg62-q0Xy_0-ebvstinu1yBsUjoQa7eLgOeZ0LNgmCAfO8v07o3DzxvtdFCyVoP5G_uGj73nGiMahV0Bs0K3gu7cSiOa9QY1_v7hwPdQ39Ix2U0JFiOCZORt0C78T8dIG_AyjL6HZptuy-Re81uCQs86BxeF3g2jJpftY-T3X5-70EjO31ztZtZmMMrEEAeVxDykM0GFWnZG1cVdIuXyJzrtUMTrUFM5RSckPKCAzIDPmXZgkaapYQJmk
+clusters:
+- cluster:
+    certificate-authority-data: -----BEGIN CERTIFICATE-----
+      MIIE6TCCAtGgAwIBAgIRAL3WuaUkRbnsb1NVZZRyXVQwDQYJKoZIhvcNAQELBQAw
+      DTELMAkGA1UEAxMCY2EwIBcNMjEwODEyMDQ0NDQ2WhgPMjA1MTA4MTIwNDU0NDZa
+      MA0xCzAJBgNVBAMTAmNhMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA
+      pIWw+PQjvO6bRfeiUbE72jTuYgE3b/5CLVF+zk5gyfZME2btbxncB36D1s2I+nF5
+      6lV7vqEy2OgWP4rEFmSjWGjHr7hhZCanYRtXgy8VCpj9lOgl1MJsqVA5GuuI9h7p
+      kOALR0IJTiWLFhyvtMLKS6ZIBHcC06k+zm8AMUX6U7/45/yl/1qmA5f7wRV3cVu4
+      DzAzPsWmT7oBVP3AeVwrS8XnMBhZCzVIT8D3A4IOQe2UZaaKh00nQKgmy6HzqvUW
+      1yw2ZoBrTpizY6jupAshs6Ft5cDHXDrGcCgbbg+Ob4FNvkoHAMAszWBG5v1J7iyd
+      KTfq111e0+4pA0jtvttPH7JElVXIA7LMP6JdELHtXGJk3mFZHgrxPBlffOZ/iGdH
+      H18O/4j5NbDCPtn8XJjmmQsfE9XLmYRsYPKS0qZ/admQujVGK2sRN64CDjaLz/zc
+      cUZkp/uptacCVZ/f7I0emvMLx+IQZVQ60+Idxb7ooU+333oOWktU77Zcf6GP0NUI
+      Zi9esXnwNmX6xeBH/E9dSfwhMI6fDz8fZ69N++aaDjipXzW7kyVInansa1svq4ZK
+      TLMcDHBdShSxXYRjHcstRFMW/bCDXfBDizPziefNzip9ZknLE2VAzb8ZK+yfd3E5
+      HqFjzNWTzHsL0qi3JyL16kURNhB4YuLh4TSgg19mIr8CAwEAAaNCMEAwDgYDVR0P
+      AQH/BAQDAgKkMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFNV9rHSGZW5aMAGo
+      2r7Wl1wcNk6CMA0GCSqGSIb3DQEBCwUAA4ICAQCaGmuf2IFwCB/qcj3AD58plsW3
+      ibVbXvFpjBvbjPHOrxcxC6gaO53MFZDanRYZzexp4uzAq8L3HBXOdpFtgIDl9Dj/
+      4g0FcZWJ67lF+83s6gZJH+dRWue/QCR2Uas+6wwg1Hm7m29jQabzVSi953DE2dci
+      XfAnk/vdHbjekP6VGpcjF7w6w+addMdBhl2CRH41x5xifrUPfNuOkdz498NnusEV
+      Aw9nn8LmLCl7qS8F/VAVRbEu7VQb/eiwm/B4W3uGpPHaU+wiDpxQkBmNdEM1EyLx
+      hAnhXnrPbuPI8WIYtc1hpZWqhMn4NVfYTPDL11rlrp1Rt3+vU9l49+9F338ZWnIh
+      hb9pDFzQx5zwuOMfbzVRowXPn/5L04Ipyw0dk9GCfuOdZc5GPv3KwemaB3Z3fvwu
+      ndEj4g91dgdebHacB+vE2BGLJFqxyB+2LlVn3/9Ytk3xXH1EQuxDKTjILBV/Q2lC
+      MG6NFK+qluXueQ+dWAck9/e2wl7fQZ/vWqxOqBWNev3DbWxryCRwpsj9c96A+gHB
+      qqv6QxsSYZC6VHqRHAYXW6jr1dOrJNTMUnRca+LSgsMVaAYUl6ehhBVtrmXUonot
+      Ct34f6gP1bN8gaYoC2z92uwPy3g95aq41TRUBG9PU5PxbgNRXlnQigqfMuE7ihtb
+      GoVHXuqm/cKdY5la1w==
+      -----END CERTIFICATE-----
+    server: https://asr-dbae7b65.hcp.southeastasia.azmk8s.io:443
+  name: self-hosted-cluster
+contexts:
+- context:
+    cluster: self-hosted-cluster
+    user: svcs-acct-dply
+  name: svcs-acct-context
+current-context: svcs-acct-context

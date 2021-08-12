@@ -20,6 +20,13 @@ resource "azurerm_storage_share" "file_share" {
 }
 
 
+resource "azurerm_storage_share" "jenkins_share" {
+  name                 = "jenkins-share"
+  storage_account_name = azurerm_storage_account.storage_account.name
+  quota = 50  # max size of file_share in Gb
+}
+
+
 resource "azurerm_kubernetes_cluster" "production" {
   name                = "asr-production"
   location            = azurerm_resource_group.resource_group.location
@@ -29,22 +36,10 @@ resource "azurerm_kubernetes_cluster" "production" {
   default_node_pool {
     name       = "default"
     node_count = 1
-    vm_size    = "standard_d1"
+    vm_size    = "standard_d2" #standard_d3
   }
 
   identity {
     type = "SystemAssigned"
-  }
-}
-
-
-resource "azurerm_kubernetes_cluster_node_pool" "user_assigned_node_pool" {
-  name                  = "internal"
-  kubernetes_cluster_id = azurerm_kubernetes_cluster.production.id
-  vm_size               = "standard_d3"
-  node_count            = 1
-
-  tags = {
-    Environment = "Production"
   }
 }

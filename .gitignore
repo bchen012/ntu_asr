@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+models/*
+Terraform_azure/.terraform.tfstate.lock.info
+Terraform_azure/terraform.tfstate
+Terraform_azure/.terraform.lock.hcl
+Terraform_azure/terraform.tfstate.backup
+Terraform_google/.terraform
+Terraform_google/.terraform.lock.hcl
+Terraform_aws/.terraform.lock.hcl
+Terraform_aws/.terraform
