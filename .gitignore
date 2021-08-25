@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 models/*
 Terraform_azure/.terraform.tfstate.lock.info
+Terraform_azure/.terraform
 Terraform_azure/terraform.tfstate
 Terraform_azure/.terraform.lock.hcl
 Terraform_azure/terraform.tfstate.backup
