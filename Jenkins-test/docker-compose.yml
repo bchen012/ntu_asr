@@ -1,10 +1,8 @@
 version: '3.7'
 
 services:
-  test_ASR:
-    build: .
-  command: bash -c "export KUBE_NAME=sgdecoding-online-scaled
-  &&  export MASTER_SERVICE="$KUBE_NAME-master"
-  &&  export MASTER_SERVICE_IP=$(kubectl get svc -n ntuasr-production-azure $MASTER_SERVICE --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-  && python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32000 -t abc --model="SingaporeCS_0519NNET3" client/audio/episode-1-introduction-and-origins.wav
-  "
+  test_asr:
+    build: ./
+    command: bash -c "python3 python_dir/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32000 -t abc --model=SingaporeCS_0519NNET3 wave_dir/episode-1-introduction-and-origins.wav"
+
+# docker-compose up -e MASTER_SERVICE_IP=$(kubectl get svc -n ntuasr-production-azure $MASTER_SERVICE --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
