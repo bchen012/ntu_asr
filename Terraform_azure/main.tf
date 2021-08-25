@@ -36,7 +36,7 @@ resource "azurerm_kubernetes_cluster" "production" {
   default_node_pool {
     name       = "default"
     node_count = 1
-    vm_size    = "standard_d2" #standard_d3
+    vm_size    = "standard_d3" #standard_d3
   }
 
   identity {
