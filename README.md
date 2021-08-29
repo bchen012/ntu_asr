@@ -108,6 +108,17 @@ kubectl create secret generic $MODELS_FILESHARE_SECRET \
 ```
 helm install $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/
 ```
+26. Monitor Master and worker pods using:
+```
+kubectl get pods -w
+```
+27. Once the pods are running, test the application using:
+```
+export MASTER_SERVICE="$KUBE_NAME-master"
+export MASTER_SERVICE_IP=$(kubectl get svc $MASTER_SERVICE \
+    --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32000 -t abc --model="SingaporeCS_0519NNET3" client/audio/episode-1-introduction-and-origins.wav
+```
 
 # Setting up CI/CD using Jenkins
 
