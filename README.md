@@ -49,7 +49,7 @@
 `echo Storage account key: $STORAGE_KEY`<br /><br>
 _Note: We are using Gitlab container Registry to store our container image_
 
-17. 
+17. https://www.dropbox.com/sh/fnfknblof219ngl/AAAHOPxQJ2FOK6Av1XQSj--Qa?dl=0
 
 # Setting up CI/CD using Jenkins
 
