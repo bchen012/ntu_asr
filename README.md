@@ -1,4 +1,4 @@
-# Setting up Azure Cluster
+# Setting up ASR application on AZURE
 1. Open terminal
 2. Go to Project Directory
 3. `cd Terraform_azure`
@@ -17,7 +17,7 @@
 `resource_group_name = "terraform-group"`<br />
 `storage_account_name = "terraform-storage"`<br />
 `container_name = "tfstate"`<br />
-`key = "prod.terraform.tfstate"`<br />
+`key = "prod.azure.tfstate"`<br />
 `sas_token = "sp=racwdl&st=2021-08-29T07:35:55Z&se=2021-12-31T15:35:55Z&sv=2020-08-04&sr=c&sig=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"`<br />
 `}`<br />
 `}`
@@ -31,8 +31,10 @@
 `terraform apply` <br/>
 15. Wait while Terraform configures your infrastructure
  
+## Deploy ASR application
 
-## Setting up Jenkins VM
+
+# Setting up CI/CD using Jenkins
 
 
 
