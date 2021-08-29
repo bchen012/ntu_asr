@@ -66,32 +66,6 @@ python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32
 ################
 # set up Jenkins ci-cd
 #################
-# create service account
-az ad sp create-for-rbac --name TerraformServicePrincipal
-
-# Output
-#{
-#  "appId": "34d68bab-ff56-4a58-b0ba-f1c6ebff22f0",
-#  "displayName": "TerraformServicePrincipal",
-#  "name": "http://TerraformServicePrincipal",
-#  "password": "JLGvM2~Td8z8QVWT84-R9gCMvNOD3u0~kM",
-#  "tenant": "15ce9348-be2a-462b-8fc0-e1765a9b204a"
-#}
-
-
-# set up az credentials for terraform
-
-#export ARM_CLIENT_ID=34d68bab-ff56-4a58-b0ba-f1c6ebff22f0
-#export ARM_CLIENT_SECRET=trXJjEui35~inxFYHMC.uaGJJ368-6d-W-
-#export ARM_SUBSCRIPTION_ID=1a04f332-b75e-492c-a57a-42bb0e830d49
-#export ARM_TENANT_ID=15ce9348-be2a-462b-8fc0-e1765a9b204a
-
-#appId is the client_id defined above.
-#password is the client_secret defined above.
-#tenant is the tenant_id defined above.
-
-
-kubectl apply -f jenkins-admin-service-account.yaml
 
 cd Jenkins || exit
 
@@ -222,25 +196,72 @@ cat cluster-cert.txt
 # configure github webhook, follow https://docs.microsoft.com/en-us/azure/developer/jenkins/deploy-from-github-to-aks#create-a-github-webhook
 
 
-# build job
-#export IMAGE=registry.gitlab.com/benjaminc8121/ntu_asr/staging
-#docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD registry.gitlab.com
-#docker pull $IMAGE || true
-#docker build --cache-from $IMAGE:latest --tag $IMAGE:latest .
-#docker push $IMAGE:latest
-#export KUBE_NAME=sgdecoding-online-scaled
-#helm upgrade $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/
+# create service account For Terraform Authentication
+
+az ad sp create-for-rbac --name TerraformServicePrincipal
+
+# Output
+#{
+#  "appId": "34d68bab-ff56-4a58-b0ba-f1c6ebff22f0",
+#  "displayName": "TerraformServicePrincipal",
+#  "name": "http://TerraformServicePrincipal",
+#  "password": "JLGvM2~Td8z8QVWT84-R9gCMvNOD3u0~kM",
+#  "tenant": "15ce9348-be2a-462b-8fc0-e1765a9b204a"
+#}
+
+
+# set up az credentials for terraform
+
+#export ARM_CLIENT_ID=34d68bab-ff56-4a58-b0ba-f1c6ebff22f0
+#export ARM_CLIENT_SECRET=trXJjEui35~inxFYHMC.uaGJJ368-6d-W-
+#export ARM_SUBSCRIPTION_ID=1a04f332-b75e-492c-a57a-42bb0e830d49
+#export ARM_TENANT_ID=15ce9348-be2a-462b-8fc0-e1765a9b204a
+
+#appId is the client_id defined above.
+#password is the client_secret defined above.
+#tenant is the tenant_id defined above.
+
+
+kubectl apply -f jenkins-admin-service-account.yaml
+
+
+# build job - Credentials (REGISTRY_USER, REGISTRY_PASSWORD)
+
+export IMAGE=registry.gitlab.com/benjaminc8121/ntu_asr/staging
+docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD registry.gitlab.com
+docker pull $IMAGE || true
+docker build --cache-from $IMAGE:latest --tag $IMAGE:latest .
+docker push $IMAGE:latest
 
 
 # deploy infra job
+#Credentials {
+#export ARM_CLIENT_ID=34d68bab-ff56-4a58-b0ba-f1c6ebff22f0
+#export ARM_CLIENT_SECRET=trXJjEui35~inxFYHMC.uaGJJ368-6d-W-
+#export ARM_SUBSCRIPTION_ID=4768039f-ecfa-4781-8776-8acc2279e029
+#export ARM_TENANT_ID=15ce9348-be2a-462b-8fc0-e1765a9b204a
+#}
 
+cd Terraform_azure
+ls
+terraform init --reconfigure\
+    -backend-config="address=https://gitlab.com/api/v4/projects/27010974/terraform/state/jenkins_azure" \
+    -backend-config="username=benjaminc8121" \
+    -backend-config="password=iEZo54NhdqGsaTe-4c_s"
+terraform validate
+terraform plan
+terraform apply -auto-approve
 
-# deploy application job
+# deploy application job - Credentials {KUBECONFIG}
 
+export KUBE_NAME=sgdecoding-online-scaled
+helm upgrade $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/ -n ntuasr-production-azure
 
-# test job
+# test job - Credentials {KUBECONFIG}
+
+cd Jenkins-test
 export KUBE_NAME=sgdecoding-online-scaled
 export MASTER_SERVICE="$KUBE_NAME-master"
 export MASTER_SERVICE_IP=$(kubectl get svc -n ntuasr-production-azure $MASTER_SERVICE --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-echo $MASTER_SERVICE
-#
+echo $MASTER_SERVICE_IP
+docker-compose up
