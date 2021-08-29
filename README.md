@@ -230,6 +230,9 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 22. Click **Save and Finish > Start using Jenkins**
 23. Jenkins is ready for use.
 
+# Configure Azure CI/CD Pipeline
+
+
 
 ## References
 
