@@ -254,6 +254,44 @@ _Output looks something like this_:
 * **ID** - ARM_CLIENT_SECRET **Secret** - <password> (Get from output above)
 * **ID** - ARM_SUBSCRIPTION_ID **Secret** - <subscriptio_ID> (Get from Azure Console)
 * **ID** - ARM_TENANT_ID **Secret** - <tenantID> (Get from output above)
+    
+## Create KUBECONFIG FILE
+
+## Configure Build Job
+    
+## Configure Deploy Infrastructure Job
+
+## Configure Deploy Application Job
+ 
+## Configure Test Job
+    
+# Configure Google Cloud CI/CD Pipeline
+
+## Automate Google Cloud Authentication
+
+## Create KUBECONFIG FILE
+
+## Configure Build Job
+    
+## Configure Deploy Infrastructure Job
+
+## Configure Deploy Application Job
+ 
+## Configure Test Job
+
+# Configure AWS CI/CD Pipeline
+
+## Automate AWS Authentication
+
+## Create KUBECONFIG FILE
+
+## Configure Build Job
+    
+## Configure Deploy Infrastructure Job
+
+## Configure Deploy Application Job
+ 
+## Configure Test Job
 
 ## References
 
