@@ -1,9 +1,6 @@
 cd Terraform_azure || exit
 az login
-terraform init --reconfigure\
-    -backend-config="address=https://gitlab.com/api/v4/projects/27010974/terraform/state/jenkins_azure" \
-    -backend-config="username=benjaminc8121" \
-    -backend-config="password=iEZo54NhdqGsaTe-4c_s"
+terraform init
 terraform validate
 terraform plan
 terraform apply -auto-approve
@@ -172,10 +169,10 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 
 
-# install ws4py on jenkins-vm
-sudo apt update
-sudo apt install python3-pip
-pip install ws4py
+# install docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
 
 
 
