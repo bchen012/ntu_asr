@@ -32,7 +32,24 @@
 15. Wait while Terraform configures your infrastructure
  
 ## Deploy ASR application
+16. Run the following to set up Environment: <br />
+`export GITLAB_USERNAME=GITLAB_USERNAME`<br />
+`export GITLAB_PASSWORD=PASSWORD`<br />
+`export GITLAB_EMAIL=GITLAB_EMAIL`<br />
+`export KUBE_NAME=sgdecoding-online-scaled`<br />
+`export RESOURCE_GROUP=ntu-online-scaled`<br />
+`export STORAGE_ACCOUNT_NAME=ntuscaledstorage3`<br />
+`export MODEL_SHARE=online-models`<br />
+`export MODELS_FILESHARE_SECRET="models-files-secret"`<br />
+`export STORAGE_KEY=$(az storage account keys list \`<br />
+`--resource-group $RESOURCE_GROUP\`<br />
+`--account-name $STORAGE_ACCOUNT_NAME \`<br />
+`--query "[0].value" -o tsv)`<br />
+`echo Storage account name: $STORAGE_ACCOUNT_NAME`<br />
+`echo Storage account key: $STORAGE_KEY`<br /><br>
+_Note: We are using Gitlab container Registry to store our container image_
 
+17. 
 
 # Setting up CI/CD using Jenkins
 
