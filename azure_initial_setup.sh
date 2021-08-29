@@ -243,11 +243,7 @@ docker push $IMAGE:latest
 #}
 
 cd Terraform_azure
-ls
-terraform init --reconfigure\
-    -backend-config="address=https://gitlab.com/api/v4/projects/27010974/terraform/state/jenkins_azure" \
-    -backend-config="username=benjaminc8121" \
-    -backend-config="password=iEZo54NhdqGsaTe-4c_s"
+terraform init
 terraform validate
 terraform plan
 terraform apply -auto-approve
