@@ -42,6 +42,7 @@ export GITLAB_USERNAME=GITLAB_USERNAME
 export GITLAB_PASSWORD=PASSWORD
 export GITLAB_EMAIL=GITLAB_EMAIL
 export KUBE_NAME=sgdecoding-online-scaled
+export NAMESPACE=ntuasr-production-azure
 export RESOURCE_GROUP=ntu-online-scaled
 export STORAGE_ACCOUNT_NAME=ntuscaledstorage3
 export MODEL_SHARE=online-models
@@ -56,12 +57,11 @@ echo Storage account key: $STORAGE_KEY<br>
 _Note: We are using Gitlab container Registry to store our container image_
 
 17. Download all the files this link and save it in **models/** directory: <br>
- https://www.dropbox.com/sh/fnfknblof219ngl/AAAHOPxQJ2FOK6Av1XQSj--Qa?dl=0
- <br>
+ https://www.dropbox.com/sh/fnfknblof219ngl/AAAHOPxQJ2FOK6Av1XQSj--Qa?dl=0 <br><br>
  _Note: Ensure the the directory structure is the same_
  
- 18. Upload the models onto Azure file store using the following command: <br>
- ```
+18. Upload the models onto Azure file store using the following command: <br>
+```
 NUM_MODELS=$(find ./models/ -maxdepth 1 -type d | wc -l)
 if [ $NUM_MODELS -gt 1 ]; then
     echo "Uploading models to storage..."
@@ -75,6 +75,38 @@ else
     exit 1
 fi
 echo "$((NUM_MODELS - 1)) models uploaded to Azure File Share storage | Azure Files: $MODEL_SHARE"
+```
+
+19. Connect to the Kubernetes cluster by running: <br>
+`az aks get-credentials --resource-group $RESOURCE_GROUP --name asr-production --overwrite-existing`
+20. Set up namespace for our application and go to that namespace: <br>
+```
+kubectl create namespace $NAMESPACE
+kubectl config set-context --current --namespace $NAMESPACE
+```
+21. Create Fileshare secret for cluster:
+```
+kubectl create secret generic $MODELS_FILESHARE_SECRET \
+    --from-literal=azurestorageaccountname=$STORAGE_ACCOUNT_NAME \
+    --from-literal=azurestorageaccountkey=$STORAGE_KEY
+```
+22. Apply Kubernetes secrets:
+```
+kubectl apply -f azure_deployment_helm/secret/run_kubernetes_secret.yaml
+```
+23. Apply persistant volumes configurations:
+```
+kubectl apply -f azure_pv/
+```
+24. Create Container Registry Credentials using Kubernetes secrets:
+```
+kubectl create secret generic $MODELS_FILESHARE_SECRET \
+    --from-literal=azurestorageaccountname=$STORAGE_ACCOUNT_NAME \
+    --from-literal=azurestorageaccountkey=$STORAGE_KEY
+```
+25. Deploy application using Helm:
+```
+helm install $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/
 ```
 
 # Setting up CI/CD using Jenkins
