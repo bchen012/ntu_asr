@@ -122,7 +122,105 @@ python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32
 
 # Setting up CI/CD using Jenkins
 
-
+## Set up Jenkins VM
+1. Go to Project Directory and create Service account for Jenkins:
+```
+kubectl apply -f jenkins-admin-service-account.yaml
+```
+2. Go to Jenkins directory in Project:
+`cd Jenkins`
+3. Create Jenkins VM:
+```
+az vm create \
+  --resource-group $RESOURCE_GROUP \
+  --name Jenkins-vm \
+  --image UbuntuLTS \
+  --admin-username "azureuser" \
+  --generate-ssh-keys \
+  --custom-data cloud-init-jenkins.txt
+```
+4. By default, Jenkins runs on port 8080. Therefore, open port 8080 on the new virtual machine using az vm open
+```
+az vm open-port \
+  --resource-group $RESOURCE_GROUP \
+  --name Jenkins-vm  \
+  --port 8080 --priority 1010
+```
+5. Open port 80 inbound.
+```
+az vm open-port \
+  --resource-group $RESOURCE_GROUP \
+  --name Jenkins-vm  \
+  --port 80 --priority 1020
+```
+6. Get the public IP address for the sample virtual machine using az vm show.
+```
+az vm show \
+  --resource-group $RESOURCE_GROUP \
+  --name Jenkins-vm -d \
+  --query [publicIps] \
+  --output tsv
+```
+7. Connect to the VM:
+```
+ssh azureuser@<ip-address-of-VM>
+```
+8. Verify that Jenkins is running by getting the status of the Jenkins service (Sometimes must wait a while):
+```
+service jenkins status
+```
+9. Install Azure CLI in Jenkins VM:
+```
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+10. Log into azure account in Jenkins VM:
+```
+az login
+```
+11. Install Docker on Jenkins VM:
+```
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y;
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -;
+sudo apt-key fingerprint 0EBFCD88;
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable";
+sudo apt-get update;
+sudo apt-get install docker-ce -y;
+```
+12. Configure access for Jenkins VM:
+```
+sudo usermod -aG docker jenkins;
+sudo usermod -aG docker azureuser;
+sudo touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion;
+sudo service jenkins restart;
+sudo chmod 777 /var/lib/jenkins/
+sudo chmod 777 /var/lib/jenkins/config
+sudo chmod 777 /var/run/docker.sock
+```
+13. Install helm in Jenkins VM:
+```
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+sudo chmod 700 get_helm.sh
+./get_helm.sh
+```
+14. Install terraform on Jenkins VM:
+```
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install terraform
+```
+15. Install Kubernetes on Jenkins VM:
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client
+```
+16. Install docker-compose on Jenkins VM:
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+```
 
 
 ## References
