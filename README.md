@@ -12,23 +12,27 @@
 10. Copy the SAS token generated
 11. Go to **Terraform_azure/providers.tf** 
 12. Fill up the following:<br />
-`terraform { `<br />
-`backend "azurerm" { `<br />
-`resource_group_name = "terraform-group"`<br />
-`storage_account_name = "terraform-storage"`<br />
-`container_name = "tfstate"`<br />
-`key = "prod.azure.tfstate"`<br />
-`sas_token = "sp=racwdl&st=2021-08-29T07:35:55Z&se=2021-12-31T15:35:55Z&sv=2020-08-04&sr=c&sig=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"`<br />
-`}`<br />
-`}`
+```
+terraform { 
+    backend "azurerm" { 
+        resource_group_name = "terraform-group 
+        storage_account_name = "terraform-storage 
+        container_name = "tfstate 
+        key = "prod.azure.tfstate 
+        sas_token = "sp=racwdl&st=2021-08-29T07:35:55Z&se=2021-12-31T15:35:55Z&sv=2020-08-04&sr=c&sig=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+    }
+}
+```
 
 ## Set up Infrastructure using Terraform
 13. Run `az login` so Terraform is authenticated with Azure
 14. Run the following: <br/>
-`terraform init` <br/>
-`terraform validate` <br/>
-`terraform plan` <br/>
-`terraform apply` <br/>
+```
+terraform init
+terraform validate
+terraform plan
+terraform apply
+```
 15. Wait while Terraform configures your infrastructure
  
 ## Deploy ASR application
@@ -57,20 +61,21 @@ _Note: We are using Gitlab container Registry to store our container image_
  _Note: Ensure the the directory structure is the same_
  
  18. Upload the models onto Azure file store using the following command: <br>
-`NUM_MODELS=$(find ./models/ -maxdepth 1 -type d | wc -l)`<br>
-`if [ $NUM_MODELS -gt 1 ]; then`<br>
-`    echo "Uploading models to storage..."`<br>
-`    # az storage blob upload-batch -d $AZURE_CONTAINER_NAME --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT_NAME -s models/`<br>
-`    az storage file upload-batch -d $MODEL_SHARE --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT_NAME -s models/`<br>
-`else`<br>
-`    printf "\n"`<br>
-`    printf "##########################################################################\n"`<br>
-`    echo "Please put at least one model in the ./models directory before continuing"`<br>
-`    printf "##########################################################################\n"`<br>
-`    exit 1`<br>
-`fi`<br>
-`echo "$((NUM_MODELS - 1)) models uploaded to Azure File Share storage | Azure Files: $MODEL_SHARE"`<br>
-
+ ```
+NUM_MODELS=$(find ./models/ -maxdepth 1 -type d | wc -l)
+if [ $NUM_MODELS -gt 1 ]; then
+    echo "Uploading models to storage..."
+    # az storage blob upload-batch -d $AZURE_CONTAINER_NAME --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT_NAME -s models/
+    az storage file upload-batch -d $MODEL_SHARE --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT_NAME -s models/
+else
+    printf "\n"
+    printf "##########################################################################\n"
+    echo "Please put at least one model in the ./models directory before continuing"
+    printf "##########################################################################\n"
+    exit 1
+fi
+echo "$((NUM_MODELS - 1)) models uploaded to Azure File Share storage | Azure Files: $MODEL_SHARE"
+```
 
 # Setting up CI/CD using Jenkins
 
