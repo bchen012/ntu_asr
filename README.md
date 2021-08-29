@@ -240,19 +240,20 @@ az ad sp create-for-rbac --name TerraformServicePrincipal
 _Output looks something like this_:
 ```
 {
-  "appId": "34d68bab-ff56-4a58-b0ba-f1c6ebff22f0",
+  "appId": "<appID>",
   "displayName": "TerraformServicePrincipal",
   "name": "http://TerraformServicePrincipal",
-  "password": "JLGvM2~Td8z8QVWT84-R9gCMvNOD3u0~kM",
-  "tenant": "15ce9348-be2a-462b-8fc0-e1765a9b204a"
+  "password": "<password>",
+  "tenant": "<tenantID>"
 }
 ```
 2. Go to **Jenkins Dashboard > Manage Jenkins > Manage Credentials > Jenkins > Global credentials (unrestricted) > Add Credentials**
-3. Create the following Credentials:
-ARM_CLIENT_ID=34d68bab-ff56-4a58-b0ba-f1c6ebff22f0
-#export ARM_CLIENT_SECRET=trXJjEui35~inxFYHMC.uaGJJ368-6d-W-
-#export ARM_SUBSCRIPTION_ID=1a04f332-b75e-492c-a57a-42bb0e830d49
-#export ARM_TENANT_ID=15ce9348-be2a-462b-8fc0-e1765a9b204a
+3. Create the following Credentials of type **Secret Text**:
+
+* **ID** - ARM_CLIENT_ID **Secret** - <appID> (Get from output above)
+* **ID** - ARM_CLIENT_SECRET **Secret** - <password> (Get from output above)
+* **ID** - ARM_SUBSCRIPTION_ID **Secret** - <subscriptio_ID> (Get from Azure Console)
+* **ID** - ARM_TENANT_ID **Secret** - <tenantID> (Get from output above)
 
 ## References
 
