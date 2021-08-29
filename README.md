@@ -33,23 +33,44 @@
  
 ## Deploy ASR application
 16. Run the following to set up Environment: <br />
-`export GITLAB_USERNAME=GITLAB_USERNAME`<br />
-`export GITLAB_PASSWORD=PASSWORD`<br />
-`export GITLAB_EMAIL=GITLAB_EMAIL`<br />
-`export KUBE_NAME=sgdecoding-online-scaled`<br />
-`export RESOURCE_GROUP=ntu-online-scaled`<br />
-`export STORAGE_ACCOUNT_NAME=ntuscaledstorage3`<br />
-`export MODEL_SHARE=online-models`<br />
-`export MODELS_FILESHARE_SECRET="models-files-secret"`<br />
-`export STORAGE_KEY=$(az storage account keys list \`<br />
-`--resource-group $RESOURCE_GROUP\`<br />
-`--account-name $STORAGE_ACCOUNT_NAME \`<br />
-`--query "[0].value" -o tsv)`<br />
-`echo Storage account name: $STORAGE_ACCOUNT_NAME`<br />
-`echo Storage account key: $STORAGE_KEY`<br /><br>
+```
+export GITLAB_USERNAME=GITLAB_USERNAME
+export GITLAB_PASSWORD=PASSWORD
+export GITLAB_EMAIL=GITLAB_EMAIL
+export KUBE_NAME=sgdecoding-online-scaled
+export RESOURCE_GROUP=ntu-online-scaled
+export STORAGE_ACCOUNT_NAME=ntuscaledstorage3
+export MODEL_SHARE=online-models
+export MODELS_FILESHARE_SECRET="models-files-secret"
+export STORAGE_KEY=$(az storage account keys list \
+  --resource-group $RESOURCE_GROUP\
+  --account-name $STORAGE_ACCOUNT_NAME \
+  --query "[0].value" -o tsv)
+echo Storage account name: $STORAGE_ACCOUNT_NAME
+echo Storage account key: $STORAGE_KEY<br>
+```
 _Note: We are using Gitlab container Registry to store our container image_
 
-17. https://www.dropbox.com/sh/fnfknblof219ngl/AAAHOPxQJ2FOK6Av1XQSj--Qa?dl=0
+17. Download all the files this link and save it in **models/** directory: <br>
+ https://www.dropbox.com/sh/fnfknblof219ngl/AAAHOPxQJ2FOK6Av1XQSj--Qa?dl=0
+ <br>
+ _Note: Ensure the the directory structure is the same_
+ 
+ 18. Upload the models onto Azure file store using the following command: <br>
+`NUM_MODELS=$(find ./models/ -maxdepth 1 -type d | wc -l)`<br>
+`if [ $NUM_MODELS -gt 1 ]; then`<br>
+`    echo "Uploading models to storage..."`<br>
+`    # az storage blob upload-batch -d $AZURE_CONTAINER_NAME --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT_NAME -s models/`<br>
+`    az storage file upload-batch -d $MODEL_SHARE --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT_NAME -s models/`<br>
+`else`<br>
+`    printf "\n"`<br>
+`    printf "##########################################################################\n"`<br>
+`    echo "Please put at least one model in the ./models directory before continuing"`<br>
+`    printf "##########################################################################\n"`<br>
+`    exit 1`<br>
+`fi`<br>
+`echo "$((NUM_MODELS - 1)) models uploaded to Azure File Share storage | Azure Files: $MODEL_SHARE"`<br>
+
 
 # Setting up CI/CD using Jenkins
 
