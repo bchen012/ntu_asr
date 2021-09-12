@@ -447,7 +447,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 # Configure Azure CI/CD Pipeline
 
-## Automate Azure Authentication
+## Automate Azure Terraform Authentication
 1. create service account For Terraform Authentication
 ```
 az ad sp create-for-rbac --name TerraformServicePrincipal
@@ -465,16 +465,24 @@ _Output looks something like this_:
 2. Go to **Jenkins Dashboard > Manage Jenkins > Manage Credentials > Jenkins > Global credentials (unrestricted) > Add Credentials**
 3. Create the following Credentials of type **Secret Text**:
 
-* **ID** - ARM_CLIENT_ID **Secret** - <appID> (Get from output above)
-* **ID** - ARM_CLIENT_SECRET **Secret** - <password> (Get from output above)
-* **ID** - ARM_SUBSCRIPTION_ID **Secret** - <subscriptio_ID> (Get from Azure Console)
-* **ID** - ARM_TENANT_ID **Secret** - <tenantID> (Get from output above)
+ - **ID** - ARM_CLIENT_ID **Secret** - appID (Get from output above)
+ - **ID** - ARM_CLIENT_SECRET **Secret** - password (Get from output above)
+ - **ID** - ARM_SUBSCRIPTION_ID **Secret** - subscriptio_ID (Get from Azure Console)
+ - **ID** - ARM_TENANT_ID **Secret** - tenantID (Get from output above)
     
 ## Create KUBECONFIG FILE
-
+- Follow this guide on how to create Kubeconfig Files: http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/
+- Save the Kubeconfig file under **kubeconfig_files** Directory
+- 
     
-
 ## Configure Build Job
+1. Log into Jenkins
+2. Go to **Dashboard > New Item > Enter 'Azure-build' > Freestyle project**
+3. Check **GitHub project** under **General** and paste the url of the project (e.g https://github.com/bchen012/ntu_asr/)
+4. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git)
+_Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
+5. Check **GitHub hook trigger for GITScm polling** under **Build Triggers**
+6. 
     
 ## Configure Deploy Infrastructure Job
 
