@@ -551,7 +551,7 @@ helm upgrade $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/ -n 
 ```
     
 # Configure Google Cloud CI/CD Pipeline
-## Automate Google Cloud Authentication
+## Automate Google Cloud Terraform Authentication
 1. Go to **IAM & Admin > ServiceAccounts > terraform-sa(created using terraform) > Keys** on Google Cloud Console
 2. Create a new JSON type key
 3. Save the Service account credentials file somewhere
@@ -625,10 +625,32 @@ helm upgrade $KUBE_NAME google_deployment_helm/helm/sgdecoding-online-scaled/ -n
 ```
  
 ## Configure Test Job
+1. Log into Jenkins
+2. Go to **Dashboard > New Item > Enter 'Google-Deploy-ASR-Application' > Freestyle project**
+3. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
+_Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
+4. Under **Build Triggers** check **Build after other projects are built** and choose **Google-Deploy-ASR-Application* for Projects to watch
+5. Under **Build Environment** check **Use secret text(s) or file(s)**
+6. Add Secret file
+7. Select the Kubeconfig file created earlier from the Google cluster
+8. Variable name set as `KUBECONFIG`
+9. In **Build** section, add **Execute shell** to it
+10. Add the following code to the command: <br />
+```
+cd Jenkins-test
+export KUBE_NAME=sgdecoding-online-scaled
+export MASTER_SERVICE="$KUBE_NAME-master"
+export MASTER_SERVICE_IP=$(kubectl get svc -n ntuasr-production-google $MASTER_SERVICE --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+echo $MASTER_SERVICE_IP
+docker-compose up
+```
 
 # Configure AWS CI/CD Pipeline
-
-## Automate AWS Authentication
+## Automate AWS Terraform Authentication
+1. Go to **Jenkins Dashboard > Manage Jenkins > Manage Credentials > Jenkins > Global credentials (unrestricted) > Add Credentials**
+2. Create the following Credentials of type **Secret Text**:
+ - **ID** - AWS_ACCESS_KEY_ID, **Secret** - XXXXXXXXEXAMPLE
+ - **ID** - AWS_SECRET_ACCESS_KEY, **Secret** - XXXXXX/XXXXXX/XXXXXEXAMPLEKEY
 
 ## Create KUBECONFIG FILE
 1. Follow this guide on how to create Kubeconfig Files: http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/
@@ -645,11 +667,44 @@ _Only one build job is required as the clusters share one Container Registry_
 _This was already configured on Azure's Pipeline_
     
 ## Configure Deploy Infrastructure Job
+1. Log into Jenkins
+2. Go to **Dashboard > New Item > Enter 'AWS-Deploy-Infrastructure' > Freestyle project**
+3. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
+_Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
+4. Under **Build Triggers** check **Build after other projects are built** and choose **Azure-build** for Projects to watch
+5. Under **Build Environment** check **Use secret text(s) or file(s)**
+6. Add the following secret texts to the build environment: <br />
+ - **ID** - AWS_ACCESS_KEY_ID, **Secret** - XXXXXXXXEXAMPLE
+ - **ID** - AWS_SECRET_ACCESS_KEY, **Secret** - XXXXXX/XXXXXX/XXXXXEXAMPLEKEY
+_Note: These were created in one of the previous sections_<br />
+**_Important: Variable names for each secret must be same as their ID_**
+7. In **Build** section, add **Execute shell** to it
+8. Add the following code to the command: <br />
+```
+cd Terraform_AWS
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+```
 
 ## Configure Deploy Application Job
+1. Log into Jenkins
+2. Go to **Dashboard > New Item > Enter 'AWS-Deploy-ASR-Application' > Freestyle project**
+3. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
+_Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
+4. Under **Build Triggers** check **Build after other projects are built** and choose **AWS-Deploy-Infrastructure* for Projects to watch
+5. Under **Build Environment** check **Use secret text(s) or file(s)**
+6. Add Secret file
+7. Select the Kubeconfig file created earlier from the AWS cluster
+8. Variable name set as `KUBECONFIG`
+9. In **Build** section, add **Execute shell** to it
+10. Add the following code to the command: <br />
+```
+export KUBE_NAME=sgdecoding-online-scaled
+helm upgrade $KUBE_NAME aws_deployment_helm/helm/sgdecoding-online-scaled/ -n ntuasr-production-aws
+```
  
-## Configure Test Job
-
 ## References
 
 Setup jenkins VM on Azure:
