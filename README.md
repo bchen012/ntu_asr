@@ -521,9 +521,10 @@ _Note: If the git Repo is private, create a access token and use that as the pas
  - **ID** - ARM_CLIENT_SECRET, **Secret** - password (Get from output above)
  - **ID** - ARM_SUBSCRIPTION_ID, **Secret** - subscriptio_ID (Get from Azure Console)
  - **ID** - ARM_TENANT_ID, **Secret** - tenantID (Get from output above)
-_Note: These were created in one of the previous sections_
+_Note: These were created in one of the previous sections_<br />
+**_Important: Variable names for each secret must be same as their ID_**
 7. In **Build** section, add **Execute shell** to it
-11. Add the following code to the command: <br />
+8. Add the following code to the command: <br />
 ```
 cd Terraform_azure
 terraform init
@@ -533,8 +534,24 @@ terraform apply -auto-approve
 ```
 
 ## Configure Deploy Application Job
- 
+1. Log into Jenkins
+2. Go to **Dashboard > New Item > Enter 'Azure-Deploy-ASR-Application' > Freestyle project**
+3. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
+_Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
+4. Under **Build Triggers** check **Build after other projects are built** and choose **Azure-Deploy-Infrastructure* for Projects to watch
+5. Under **Build Environment** check **Use secret text(s) or file(s)**
+6. Add Secret file
+7. Select the Kubeconfig file created earlier from the Azure cluster
+8. Variable name set as `KUBECONFIG`
+9. In **Build** section, add **Execute shell** to it
+10. Add the following code to the command: <br />
+```
+export KUBE_NAME=sgdecoding-online-scaled
+helm upgrade $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/ -n ntuasr-production-azure
+```
+
 ## Configure Test Job
+
     
 # Configure Google Cloud CI/CD Pipeline
 
