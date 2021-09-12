@@ -31,7 +31,7 @@ gcloud projects add-iam-policy-binding ntu-asr-317615 \
 cd ..
 
 export GITLAB_USERNAME=benjaminc8121
-export GITLAB_PASSWORD=0291012IpMs!
+export GITLAB_PASSWORD=<PASSWORD>
 export GITLAB_EMAIL=benjaminc8121@gmail.com
 export KUBE_NAME=sgdecoding-online-scaled
 
