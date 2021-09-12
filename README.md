@@ -474,10 +474,10 @@ _Output looks something like this_:
 2. Go to **Jenkins Dashboard > Manage Jenkins > Manage Credentials > Jenkins > Global credentials (unrestricted) > Add Credentials**
 3. Create the following Credentials of type **Secret Text**:
 
- - **ID** - ARM_CLIENT_ID **Secret** - appID (Get from output above)
- - **ID** - ARM_CLIENT_SECRET **Secret** - password (Get from output above)
- - **ID** - ARM_SUBSCRIPTION_ID **Secret** - subscriptio_ID (Get from Azure Console)
- - **ID** - ARM_TENANT_ID **Secret** - tenantID (Get from output above)
+ - **ID** - ARM_CLIENT_ID, **Secret** - appID (Get from output above)
+ - **ID** - ARM_CLIENT_SECRET, **Secret** - password (Get from output above)
+ - **ID** - ARM_SUBSCRIPTION_ID, **Secret** - subscriptio_ID (Get from Azure Console)
+ - **ID** - ARM_TENANT_ID, **Secret** - tenantID (Get from output above)
     
 ## Create KUBECONFIG FILE
 1. Follow this guide on how to create Kubeconfig Files: http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/
@@ -492,7 +492,7 @@ _Output looks something like this_:
 1. Log into Jenkins
 2. Go to **Dashboard > New Item > Enter 'Azure-build' > Freestyle project**
 3. Check **GitHub project** under **General** and paste the url of the project (e.g https://github.com/bchen012/ntu_asr/)
-4. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git)
+4. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
 _Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
 5. Check **GitHub hook trigger for GITScm polling** under **Build Triggers**
 6. Check **Use secret text(s) or file(s)** under **Build Environment**
@@ -510,6 +510,27 @@ docker push $IMAGE:latest
 ```
     
 ## Configure Deploy Infrastructure Job
+1. Log into Jenkins
+2. Go to **Dashboard > New Item > Enter 'Azure-Deploy-Infrastructure' > Freestyle project**
+3. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
+_Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
+4. Under **Build Triggers** check **Build after other projects are built** and choose **Azure-build** for Projects to watch
+5. Under **Build Environment** check **Use secret text(s) or file(s)**
+6. Add the following secret texts to the build environment: <br />
+ - **ID** - ARM_CLIENT_ID, **Secret** - appID (Get from output above)
+ - **ID** - ARM_CLIENT_SECRET, **Secret** - password (Get from output above)
+ - **ID** - ARM_SUBSCRIPTION_ID, **Secret** - subscriptio_ID (Get from Azure Console)
+ - **ID** - ARM_TENANT_ID, **Secret** - tenantID (Get from output above)
+_Note: These were created in one of the previous sections_
+7. In **Build** section, add **Execute shell** to it
+11. Add the following code to the command: <br />
+```
+cd Terraform_azure
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+```
 
 ## Configure Deploy Application Job
  
