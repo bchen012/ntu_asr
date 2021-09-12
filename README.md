@@ -239,7 +239,8 @@ python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32
 ## Set up AWS Infrastructure using Terraform
 1. Install AWS CLI
 2. `aws configure`
-3. 
+3. Fill in Credentials
+4. 
 
 # Setting up CI/CD using Jenkins
 
