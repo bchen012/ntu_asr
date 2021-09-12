@@ -163,7 +163,6 @@ terraform apply
 ```
 9. Wait while Terraform configures your infrastructure
 
-
 ## Deploy ASR application on Google Cloud
 
 1. Upload model to Google File Store
@@ -206,7 +205,7 @@ kubectl config set-context --current --namespace $NAMESPACE
 ```
 5. Apply Kubernetes secrets:
 ```
-kubectl apply -f azure_deployment_helm/secret/run_kubernetes_secret.yaml
+kubectl apply -f google_deployment_helm/secret/run_kubernetes_secret.yaml
 ```
 6. Apply persistant volumes configurations:
 ```
@@ -222,7 +221,7 @@ kubectl create secret docker-registry regcred
 ```
 8. Deploy application using Helm:
 ```
-helm install $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/
+helm install $KUBE_NAME google_deployment_helm/helm/sgdecoding-online-scaled/
 ```
 9. Monitor Master and worker pods using:
 ```
@@ -236,6 +235,11 @@ export MASTER_SERVICE_IP=$(kubectl get svc $MASTER_SERVICE \
 python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32000 -t abc --model="SingaporeCS_0519NNET3" client/audio/episode-1-introduction-and-origins.wav
 ```
 
+# Set up ASR application on AWS
+## Set up AWS Infrastructure using Terraform
+1. Install AWS CLI
+2. `aws configure`
+3. 
 
 # Setting up CI/CD using Jenkins
 
