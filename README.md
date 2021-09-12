@@ -237,10 +237,103 @@ python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32
 
 # Set up ASR application on AWS
 ## Set up AWS Infrastructure using Terraform
-1. Install AWS CLI
-2. `aws configure`
+1. Install AWS CLI and EKSCTL
+2. Run `aws configure` to login to AWS
 3. Fill in Credentials
-4. 
+4. Go to **Terraform_aws/vpc.tf** 
+5. Fill up/replace the following:<br />
+```
+terraform { 
+    backend "azurerm" { 
+        resource_group_name = "terraform-group 
+        storage_account_name = "terraform-storage 
+        container_name = "tfstate 
+        key = "prod.aws.tfstate 
+        sas_token = "sp=racwdl&st=2021-08-29T07:35:55Z&se=2021-12-31T15:35:55Z&sv=2020-08-04&sr=c&sig=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+    }
+}
+```
+_Note: We are same backend storage as Azure, just the key is different_
+
+6. Run the following in **Terraform_google** directory: <br/>
+```
+terraform init
+terraform validate
+terraform plan
+terraform apply
+```
+7. Wait while Terraform configures your infrastructure
+
+## Deploy ASR application on AWS
+1. Upload models to EFS
+ - Create a Key pair on AWS console
+ - Create a new public subnet within the same VPC as the EFS
+ - Launch an EC2 instance (micro will do) within the subnet we created
+ - Mount the file system onto the EC2 instance
+ - Include the Key pair we created in the EC2 instance
+ - Run `scp -i "<Key_pair.pem>" -r models/ ec2-user@ec2-13-212-123-143.ap-southeast-1.compute.amazonaws.com:/mnt/efs/fs1` in project root directory
+ - Wait for models to be uploaded
+2. Run the following to set up Environment: <br />
+```
+export GITLAB_USERNAME=<GITLAB_USERNAME>
+export GITLAB_PASSWORD=<PASSWORD>
+export GITLAB_EMAIL=<GITLAB_EMAIL>
+export KUBE_NAME=sgdecoding-online-scaled
+export NAMESPACE=ntuasr-production-aws
+export CLUSTERNAME=asr_cluster
+```
+_Note: We are using Gitlab container Registry to store our container image_
+
+3. Create an IAM OIDC identity provider for your cluster: <br />
+`eksctl utils associate-iam-oidc-provider --cluster $CLUSTERNAME --approve`
+4. Connect to K8 Cluster: <br />
+`aws eks --region ap-southeast-1 update-kubeconfig --name $CLUSTERNAME`
+5. Create and set namespace <br />
+```
+kubectl create namespace $NAMESPACE
+kubectl config set-context --current --namespace $NAMESPACE
+```
+6. deploy the EFS driver <br />
+```
+helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+helm repo update
+helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
+  --namespace kube-system \
+  --set image.repository=602401143452.dkr.ecr.ap-southeast-1.amazonaws.com/eks/aws-efs-csi-driver \
+  --set controller.serviceAccount.create=false \
+  --set controller.serviceAccount.name=efs-csi-controller-sa
+```
+7. Apply Kubernetes secrets:
+```
+kubectl apply -f aws_deployment_helm/secret/run_kubernetes_secret.yaml
+```
+8. Apply persistant volumes configurations:
+```
+kubectl apply -f aws_pv/
+```
+9. Create Container Registry Credentials using Kubernetes secrets:
+```
+kubectl create secret docker-registry regcred 
+--docker-server=registry.gitlab.com 
+--docker-username=$GITLAB_USERNAME 
+--docker-password=$GITLAB_PASSWORD 
+--docker-email=$GITLAB_EMAIL
+```
+10. Deploy application using Helm:
+```
+helm install $KUBE_NAME aws_deployment_helm/helm/sgdecoding-online-scaled/
+```
+11. Monitor Master and worker pods using:
+```
+kubectl get pods -w
+```
+12. Once the pods are running, test the application using:
+```
+export MASTER_SERVICE="$KUBE_NAME-master"
+export MASTER_SERVICE_IP=$(kubectl get svc $MASTER_SERVICE \
+    --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32000 -t abc --model="SingaporeCS_0519NNET3" client/audio/episode-1-introduction-and-origins.wav
+```
 
 # Setting up CI/CD using Jenkins
 
