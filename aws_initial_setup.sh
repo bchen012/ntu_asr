@@ -1,11 +1,11 @@
 cd Terraform_aws || exit
 aws configure
 
-file_system_id=$(aws efs create-file-system \
-    --region ap-southeast-1 \
-    --performance-mode generalPurpose \
-    --query 'FileSystemId' \
-    --output text)
+#file_system_id=$(aws efs create-file-system \
+#    --region ap-southeast-1 \
+#    --performance-mode generalPurpose \
+#    --query 'FileSystemId' \
+#    --output text)
 
 terraform init --reconfigure\
     -backend-config="address=https://gitlab.com/api/v4/projects/27010974/terraform/state/production_aws" \

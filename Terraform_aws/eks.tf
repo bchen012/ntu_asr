@@ -40,9 +40,16 @@ module "eks" {
 }
 
 
-data "aws_efs_file_system" "asr-efs" {
-  file_system_id = "fs-f8d462b8"
+//data "aws_efs_file_system" "asr-efs" {
+//  file_system_id = "fs-f8d462b8"
+//}
+
+resource "aws_efs_file_system" "asr_efs" {
+  tags = {
+    "Name" = "asr-efs"
+  }
 }
+
 
 
 resource "aws_efs_mount_target" "efs_mount" {
