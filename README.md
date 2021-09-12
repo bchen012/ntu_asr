@@ -1,4 +1,4 @@
-# Setting up ASR application on AZURE
+# Set up ASR application on AZURE
 1. Open terminal
 2. Go to Project Directory
 3. `cd Terraform_azure`
@@ -24,9 +24,9 @@ terraform {
 }
 ```
 
-## Set up Infrastructure using Terraform
+## Set up Azure Infrastructure using Terraform
 13. Run `az login` so Terraform is authenticated with Azure
-14. Run the following: <br/>
+14. Run the following in **Terraform_azure** directory: <br/>
 ```
 terraform init
 terraform validate
@@ -35,12 +35,12 @@ terraform apply
 ```
 15. Wait while Terraform configures your infrastructure
  
-## Deploy ASR application
+## Deploy ASR application on Azure
 16. Run the following to set up Environment: <br />
 ```
-export GITLAB_USERNAME=GITLAB_USERNAME
-export GITLAB_PASSWORD=PASSWORD
-export GITLAB_EMAIL=GITLAB_EMAIL
+export GITLAB_USERNAME=<GITLAB_USERNAME>
+export GITLAB_PASSWORD=<PASSWORD>
+export GITLAB_EMAIL=<GITLAB_EMAIL>
 export KUBE_NAME=sgdecoding-online-scaled
 export NAMESPACE=ntuasr-production-azure
 export RESOURCE_GROUP=ntu-online-scaled
@@ -100,9 +100,11 @@ kubectl apply -f azure_pv/
 ```
 24. Create Container Registry Credentials using Kubernetes secrets:
 ```
-kubectl create secret generic $MODELS_FILESHARE_SECRET \
-    --from-literal=azurestorageaccountname=$STORAGE_ACCOUNT_NAME \
-    --from-literal=azurestorageaccountkey=$STORAGE_KEY
+kubectl create secret docker-registry regcred 
+--docker-server=registry.gitlab.com 
+--docker-username=$GITLAB_USERNAME 
+--docker-password=$GITLAB_PASSWORD 
+--docker-email=$GITLAB_EMAIL
 ```
 25. Deploy application using Helm:
 ```
@@ -119,6 +121,121 @@ export MASTER_SERVICE_IP=$(kubectl get svc $MASTER_SERVICE \
     --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32000 -t abc --model="SingaporeCS_0519NNET3" client/audio/episode-1-introduction-and-origins.wav
 ```
+
+# Set up ASR application on Google Cloud
+
+## Set up Google Infrastructure using Terraform
+1. Install Gcloud CLI
+2. Run `gcloud auth application-default login` so Terraform is authenticated with Google Cloud
+3. Go to Google Cloud console: https://console.cloud.google.com/
+4. Create a project and copy the project ID
+5. Set project to the project created
+```
+export PROJECT_ID=project-name-xxxxxx
+gcloud config set project $PROJECT_ID
+```
+5. Enable APIs
+```
+gcloud services enable container.googleapis.com
+gcloud services enable file.googleapis.com
+```
+6. Go to **Terraform_google/providers.tf** 
+7. Fill up/replace the following:<br />
+```
+terraform { 
+    backend "azurerm" { 
+        resource_group_name = "terraform-group 
+        storage_account_name = "terraform-storage 
+        container_name = "tfstate 
+        key = "prod.google.tfstate 
+        sas_token = "sp=racwdl&st=2021-08-29T07:35:55Z&se=2021-12-31T15:35:55Z&sv=2020-08-04&sr=c&sig=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+    }
+}
+```
+_Note: We are same backend storage as Azure, just the key is different_
+
+8. Run the following in **Terraform_google** directory: <br/>
+```
+terraform init
+terraform validate
+terraform plan
+terraform apply
+```
+9. Wait while Terraform configures your infrastructure
+
+
+## Deploy ASR application on Google Cloud
+
+1. Upload model to Google File Store
+ - Go to Gcloud console **Compute Engine > VM instances** and click one of the VMs
+ - Get the code to ssh to the VM
+ - ssh to the VM using a new terminal window
+ - Run the following to mount the filestore onto the VM
+``` 
+ mkdir mnt 
+ sudo mount <filstore ip>:/<filestore path> <mount directory>
+ sudo chmod go+rw mnt
+ pwd
+```
+ - Keep the output from the pwd command
+ - Upload the models by running the following in our project root directory:
+ ```
+gcloud compute scp models/SingaporeCS_0519NNET3 <VM_ID>:<output_from_pwd> --project=<PROJECT_ID> --zone=asia-southeast1-a --recurse
+gcloud compute scp models/SingaporeMandarin_0519NNET3 <VM_ID>:<output_from_pwd> --project=<PROJECT_ID> --zone=asia-southeast1-a --recurse
+ ```
+_Note: VM_ID looks something like this gke-gke-ntu-asr-clus-ntu-asr-node-poo-5a093a1f-fcd2_
+
+2. Connect to Kubernetes Cluster on Google Cloud 
+```
+gcloud container clusters get-credentials gke-ntu-asr-cluster --zone asia-southeast1-a --project $PROJECT_ID
+```
+3. Run the following to set up Environment: <br />
+```
+export GITLAB_USERNAME=<GITLAB_USERNAME>
+export GITLAB_PASSWORD=<PASSWORD>
+export GITLAB_EMAIL=<GITLAB_EMAIL>
+export KUBE_NAME=sgdecoding-online-scaled
+export NAMESPACE=ntuasr-production-google
+```
+_Note: We are using Gitlab container Registry to store our container image_
+
+4. Set up namespace for our application and go to that namespace: <br>
+```
+kubectl create namespace $NAMESPACE
+kubectl config set-context --current --namespace $NAMESPACE
+```
+5. Apply Kubernetes secrets:
+```
+kubectl apply -f azure_deployment_helm/secret/run_kubernetes_secret.yaml
+```
+6. Apply persistant volumes configurations:
+```
+kubectl apply -f google_pv/
+```
+7. Create Container Registry Credentials using Kubernetes secrets:
+```
+kubectl create secret docker-registry regcred 
+--docker-server=registry.gitlab.com 
+--docker-username=$GITLAB_USERNAME 
+--docker-password=$GITLAB_PASSWORD 
+--docker-email=$GITLAB_EMAIL
+```
+8. Deploy application using Helm:
+```
+helm install $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/
+```
+9. Monitor Master and worker pods using:
+```
+kubectl get pods -w
+```
+10. Once the pods are running, test the application using:
+```
+export MASTER_SERVICE="$KUBE_NAME-master"
+export MASTER_SERVICE_IP=$(kubectl get svc $MASTER_SERVICE \
+    --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+python3 client/client_3_ssl.py -u ws://$MASTER_SERVICE_IP/client/ws/speech -r 32000 -t abc --model="SingaporeCS_0519NNET3" client/audio/episode-1-introduction-and-origins.wav
+```
+
 
 # Setting up CI/CD using Jenkins
 
@@ -256,6 +373,8 @@ _Output looks something like this_:
 * **ID** - ARM_TENANT_ID **Secret** - <tenantID> (Get from output above)
     
 ## Create KUBECONFIG FILE
+
+    
 
 ## Configure Build Job
     
