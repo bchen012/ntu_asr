@@ -445,6 +445,15 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 22. Click **Save and Finish > Start using Jenkins**
 23. Jenkins is ready for use.
 
+## Create Container Registry Secret for Jenkins
+_This Secret will be used by our pipelines later on_
+1. Go to **Dashboard > Manage Jenkins > Manage Credentials > (global) > Add Credentials**
+2. **Kind** set to **Username with password**
+3. Set Username to Gitlab username
+4. Set Password to Gitlab Password
+5. **ID** set to CR_Credentials
+_Note: This is assuming that ASR Image is stored in your Gitlab Container Registry_
+
 # Configure Azure CI/CD Pipeline
 
 ## Automate Azure Terraform Authentication
@@ -471,10 +480,14 @@ _Output looks something like this_:
  - **ID** - ARM_TENANT_ID **Secret** - tenantID (Get from output above)
     
 ## Create KUBECONFIG FILE
-- Follow this guide on how to create Kubeconfig Files: http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/
-- Save the Kubeconfig file under **kubeconfig_files** Directory
-- 
-    
+1. Follow this guide on how to create Kubeconfig Files: http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/
+2. Save the Kubeconfig file under **kubeconfig_files** Directory
+3. Upload the Kubeconfig file to Jenkins as Secrets:
+ - Go to **Dashboard > Manage Jenkins > Manage Credentials > (global) > Add Credentials**
+ - **Kind** set to **Secret file**
+ - Choose the Kubeconfig file we created
+ - **ID**: Azure-Kubeconfig
+
 ## Configure Build Job
 1. Log into Jenkins
 2. Go to **Dashboard > New Item > Enter 'Azure-build' > Freestyle project**
@@ -482,7 +495,19 @@ _Output looks something like this_:
 4. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git)
 _Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
 5. Check **GitHub hook trigger for GITScm polling** under **Build Triggers**
-6. 
+6. Check **Use secret text(s) or file(s)** under **Build Environment**
+7. Set **Username Variable** to `REGISTRY_USER`
+8. Set **Password Variable** to `REGISTRY_PASSWORD`
+9. Select the CR_Credentials we created earlier
+10. In **Build** section, add **Execute shell** to it
+11. Add the following code to the command: <br />
+```
+export IMAGE=registry.gitlab.com/benjaminc8121/ntu_asr/staging
+docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD registry.gitlab.com
+docker pull $IMAGE || true
+docker build --cache-from $IMAGE:latest --tag $IMAGE:latest .
+docker push $IMAGE:latest
+```
     
 ## Configure Deploy Infrastructure Job
 
