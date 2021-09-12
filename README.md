@@ -549,19 +549,53 @@ _Note: If the git Repo is private, create a access token and use that as the pas
 export KUBE_NAME=sgdecoding-online-scaled
 helm upgrade $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/ -n ntuasr-production-azure
 ```
-
-## Configure Test Job
-
     
 # Configure Google Cloud CI/CD Pipeline
-
 ## Automate Google Cloud Authentication
+1. Go to **IAM & Admin > ServiceAccounts > terraform-sa(created using terraform) > Keys** on Google Cloud Console
+2. Create a new JSON type key
+3. Save the Service account credentials file somewhere
+4. Upload Credentials file as Secret file on Jenkins:
+ - Go to **Dashboard > Manage Jenkins > Manage Credentials > (global) > Add Credentials**
+ - **Kind** set to **Secret file**
+ - Choose the Credentials file we saved
+ - **ID**: Google-Credentials
+5. Create Terraform role by running the following in **Terraform_google** directory: <br />
+```
+ gcloud iam roles create Terraform_role \
+  --file=Terraform_role.yaml \
+  --project $PROJECT_ID
+```
+6. Bind Terraform role to Service account created earlier: <br />
+```
+gcloud projects add-iam-policy-binding ntu-asr-317615 \
+    --member=serviceAccount:<Client_email> \
+    --role=projects/<project ID>/roles/Terraform_role
+```
+_Note: Client_email is found in the Credentials file_
 
 ## Create KUBECONFIG FILE
+1. Follow this guide on how to create Kubeconfig Files: http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/
+2. Save the Kubeconfig file under **kubeconfig_files** Directory
+3. Upload the Kubeconfig file to Jenkins as Secrets:
+ - Go to **Dashboard > Manage Jenkins > Manage Credentials > (global) > Add Credentials**
+ - **Kind** set to **Secret file**
+ - Choose the Kubeconfig file we created
+ - **ID**: Google-Kubeconfig
 
 ## Configure Build Job
+_Only one build job is required as the clusters share one Container Registry_
+_This was already configured on Azure's Pipeline_
     
 ## Configure Deploy Infrastructure Job
+1. Log into Jenkins
+2. Go to **Dashboard > New Item > Enter 'Google-Deploy-Infrastructure' > Freestyle project**
+3. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
+_Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
+4. Under **Build Triggers** check **Build after other projects are built** and choose **Azure-build** for Projects to watch
+5. Under **Build Environment** check **Use secret text(s) or file(s)**
+6. 
+
 
 ## Configure Deploy Application Job
  
@@ -572,8 +606,18 @@ helm upgrade $KUBE_NAME azure_deployment_helm/helm/sgdecoding-online-scaled/ -n 
 ## Automate AWS Authentication
 
 ## Create KUBECONFIG FILE
+1. Follow this guide on how to create Kubeconfig Files: http://docs.shippable.com/deploy/tutorial/create-kubeconfig-for-self-hosted-kubernetes-cluster/
+2. Save the Kubeconfig file under **kubeconfig_files** Directory
+3. Upload the Kubeconfig file to Jenkins as Secrets:
+ - Go to **Dashboard > Manage Jenkins > Manage Credentials > (global) > Add Credentials**
+ - **Kind** set to **Secret file**
+ - Choose the Kubeconfig file we created
+ - **ID**: AWS-Kubeconfig
+
 
 ## Configure Build Job
+_Only one build job is required as the clusters share one Container Registry_
+_This was already configured on Azure's Pipeline_
     
 ## Configure Deploy Infrastructure Job
 
