@@ -9,10 +9,7 @@ gcloud services enable file.googleapis.com
 
 # Terraform will set up application resources
 cd Terraform_google || exit
-terraform init --reconfigure\
-    -backend-config="address=https://gitlab.com/api/v4/projects/27010974/terraform/state/staging_google" \
-    -backend-config="username=benjaminc8121" \
-    -backend-config="password=LN_iPAz5NnQL6mCMD9hK"
+terraform init
 terraform validate
 terraform plan
 terraform apply -auto-approve
