@@ -512,7 +512,7 @@ docker push $IMAGE:latest
 ## Configure Deploy Infrastructure Job
 1. Log into Jenkins
 2. Go to **Dashboard > New Item > Enter 'Azure-Deploy-Infrastructure' > Freestyle project**
-3. Select **Git** uner **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
+3. Select **Git** under **Source Code Management** and paste the Repository URL (e.g https://github.com/bchen012/ntu_asr.git) <br />
 _Note: If the git Repo is private, create a access token and use that as the password when creating the secret credentials on Jenkins_
 4. Under **Build Triggers** check **Build after other projects are built** and choose **Azure-build** for Projects to watch
 5. Under **Build Environment** check **Use secret text(s) or file(s)**
