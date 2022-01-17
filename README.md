@@ -38,9 +38,11 @@ terraform apply
 ## Deploy ASR application on Azure
 16. Run the following to set up Environment: <br />
 ```
-export GITLAB_USERNAME=<GITLAB_USERNAME>
-export GITLAB_PASSWORD=<PASSWORD>
-export GITLAB_EMAIL=<GITLAB_EMAIL>
+# For gitlab credentials, use mine because the ASR image is there
+# You can build your own image and store it in your own account if you want, then just create a gitlab token with Read Registry access
+export GITLAB_USERNAME=benjaminc8121
+export GITLAB_PASSWORD=glpat-pa7YfxjHZxpTztcd8WHH
+export GITLAB_EMAIL=benjaminc8121@gmail.com
 export KUBE_NAME=sgdecoding-online-scaled
 export NAMESPACE=ntuasr-production-azure
 export RESOURCE_GROUP=ntu-online-scaled
