@@ -26,20 +26,19 @@ resource "azurerm_storage_share" "jenkins_share" {
   quota = 50  # max size of file_share in Gb
 }
 
+resource "azurerm_kubernetes_cluster" "production" {
+  name                = "asr-production"
+  location            = azurerm_resource_group.resource_group.location
+  resource_group_name = azurerm_resource_group.resource_group.name
+  dns_prefix          = "asr"
 
-//resource "azurerm_kubernetes_cluster" "production" {
-//  name                = "asr-production"
-//  location            = azurerm_resource_group.resource_group.location
-//  resource_group_name = azurerm_resource_group.resource_group.name
-//  dns_prefix          = "asr"
-//
-//  default_node_pool {
-//    name       = "default"
-//    node_count = 1
-//    vm_size    = "standard_d3" #standard_d3
-//  }
-//
-//  identity {
-//    type = "SystemAssigned"
-//  }
-//}
+  default_node_pool {
+    name       = "default"
+    node_count = 1
+    vm_size    = "standard_d3" #standard_d3
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+}
